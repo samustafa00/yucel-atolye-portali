@@ -1,4 +1,4 @@
-import { Gem, GraduationCap, ShieldCheck, Sparkles, Users } from "lucide-react";
+import { GraduationCap, ShieldCheck, Sparkles } from "lucide-react";
 import { PublicLayout } from "@/components/layouts";
 import { Card, LinkButton, StatCard } from "@/components/ui";
 import { WorkshopCard } from "@/components/workshop-card";
@@ -36,8 +36,6 @@ export default async function HomePage() {
         <div className="grid gap-3 sm:grid-cols-2">
           <StatCard label="Atölye" value={workshops.length} icon={<GraduationCap className="h-5 w-5" />} tone="bg-sky-100" />
           <StatCard label="Müfredat" value="8 hafta" icon={<ShieldCheck className="h-5 w-5" />} tone="bg-emerald-100" />
-          <StatCard label="Portal" value="4 rol" icon={<Users className="h-5 w-5" />} tone="bg-amber-100" />
-          <StatCard label="Oyunlaştırma" value="Elmas" icon={<Gem className="h-5 w-5" />} tone="bg-rose-100" />
         </div>
       </section>
 
