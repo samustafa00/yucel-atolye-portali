@@ -1,0 +1,956 @@
+# 8 Haftalık Ortaokul Atölye Müfredatları
+
+Bu doküman, ortaokul öğrencilerine yönelik 6 farklı STEM ve teknoloji atölyesi için hazırlanmıştır. İçerikler öğrencilerin anlayabileceği, öğretmenlerin uygulayabileceği ve velilerin güvenle inceleyebileceği şekilde sade, güvenli ve uygulanabilir olarak tasarlanmıştır.
+
+Atölyelerde temel amaç; öğrencilerin merak duygusunu geliştirmek, takım çalışması yapmalarını sağlamak, üretim becerilerini artırmak ve teknolojiye güvenli bir şekilde yaklaşmalarını sağlamaktır.
+
+---
+
+# 1. Döner Kanat Atölyesi
+
+## 1. Atölye Adı
+
+Döner Kanat Atölyesi
+
+## 2. Kısa Tanıtım Metni
+
+Döner Kanat Atölyesi, öğrencilerin helikopter ve dron gibi döner kanatlı hava araçlarının nasıl çalıştığını güvenli maketler, çizimler ve basit deneylerle öğrenmesini sağlar. Öğrenciler bu atölyede kaldırma kuvveti, denge, pervane hareketi ve güvenli uçuş prensiplerini eğlenceli etkinliklerle keşfeder.
+
+## 3. Bu Atölye Kimler İçin Uygun?
+
+* Helikopter ve dron teknolojilerine ilgi duyan öğrenciler
+* Maket yapmayı ve tasarım üretmeyi seven öğrenciler
+* Fen bilimleri ve mühendisliğe meraklı öğrenciler
+* Takım çalışması yapmaktan hoşlanan öğrenciler
+* Uçuş sistemlerinin nasıl çalıştığını merak eden öğrenciler
+
+## 4. Öğrenci Bu Atölyede Ne Öğrenecek?
+
+* Döner kanatlı araçların temel çalışma mantığını öğrenir.
+* Pervane, rotor, denge ve kaldırma kuvveti kavramlarını tanır.
+* Basit maketler üzerinde tasarım denemeleri yapar.
+* Güvenli çalışma ve deney kurallarını öğrenir.
+* Takım içinde görev paylaşımı yapar.
+* Gözlem yapma, ölçme ve sonuç çıkarma becerisi kazanır.
+
+## 5. 8 Haftalık Müfredat
+
+### 1. Hafta: Döner Kanatlı Araçları Tanıyalım
+
+* Konu: Helikopter, dron ve döner kanatlı hava araçlarının tanıtımı
+* Amaç: Öğrencilerin döner kanat teknolojisinin temel mantığını anlaması
+* Etkinlik: Görseller ve kısa videolar üzerinden döner kanatlı araçların incelenmesi
+* Öğrenci kazanımı: Döner kanatlı araçları günlük hayattaki kullanım alanlarıyla tanır.
+* Haftalık mini görev: Bir döner kanatlı aracın kullanım alanını araştırıp kısa not hazırlar.
+* Oyunlaştırma ödülü: Hava Aracı Kaşifi Rozeti
+
+### 2. Hafta: Pervane ve Rotor Nasıl Çalışır?
+
+* Konu: Pervane hareketi, rotor sistemi ve hava akımı
+* Amaç: Pervanenin havayı nasıl hareket ettirdiğini göstermek
+* Etkinlik: Kağıt pervane maketi yapımı ve hava akımı gözlemi
+* Öğrenci kazanımı: Pervane hareketinin kaldırma kuvvetiyle ilişkisini açıklar.
+* Haftalık mini görev: Farklı pervane şekilleri çizip hangisinin daha dengeli olabileceğini tahmin eder.
+* Oyunlaştırma ödülü: Rotor Ustası Rozeti
+
+### 3. Hafta: Kaldırma Kuvveti ve Denge
+
+* Konu: Kaldırma kuvveti, ağırlık merkezi ve denge
+* Amaç: Döner kanatlı araçlarda dengenin önemini kavratmak
+* Etkinlik: Basit karton gövde üzerinde ağırlık merkezi denemeleri
+* Öğrenci kazanımı: Bir aracın dengede kalması için ağırlık dağılımının önemli olduğunu fark eder.
+* Haftalık mini görev: Dengeli bir mini gövde tasarımı çizer.
+* Oyunlaştırma ödülü: Denge Mühendisi Rozeti
+
+### 4. Hafta: Güvenli Tasarım İlkeleri
+
+* Konu: Döner parçalarla çalışırken güvenlik
+* Amaç: Öğrencilere güvenli atölye davranışlarını kazandırmak
+* Etkinlik: Güvenli ve güvensiz tasarım örneklerinin karşılaştırılması
+* Öğrenci kazanımı: Döner parçaların neden dikkatli kullanılması gerektiğini açıklar.
+* Haftalık mini görev: “Güvenli Dron Kullanımı” afişi hazırlar.
+* Oyunlaştırma ödülü: Güvenlik Lideri Rozeti
+
+### 5. Hafta: Döner Kanat Maketi Tasarlama
+
+* Konu: Basit döner kanat maketi planlama
+* Amaç: Öğrencilerin öğrendikleri kavramları tasarıma dönüştürmesi
+* Etkinlik: Karton, pipet ve kağıt kullanarak maket tasarımına başlama
+* Öğrenci kazanımı: Tasarım sürecinde planlama yapar.
+* Haftalık mini görev: Maketinin parça listesini ve çizimini hazırlar.
+* Oyunlaştırma ödülü: Mini Tasarımcı Rozeti
+
+### 6. Hafta: Maket Üretimi ve Test
+
+* Konu: Güvenli maket üretimi
+* Amaç: Tasarlanan maketin sınıf ortamında güvenli şekilde oluşturulması
+* Etkinlik: Döner kanat maketinin öğretmen gözetiminde yapılması
+* Öğrenci kazanımı: Tasarımını ürüne dönüştürür ve gözlem yapar.
+* Haftalık mini görev: Maketinde gördüğü bir sorunu ve çözüm önerisini yazar.
+* Oyunlaştırma ödülü: Üretim Kahramanı Rozeti
+
+### 7. Hafta: İyileştirme ve Takım Çalışması
+
+* Konu: Tasarımı geliştirme, hata bulma ve çözüm üretme
+* Amaç: Öğrencilerin mühendislik döngüsünü deneyimlemesi
+* Etkinlik: Maketlerin denge, dayanıklılık ve görünüm açısından geliştirilmesi
+* Öğrenci kazanımı: Geri bildirim alır ve tasarımını iyileştirir.
+* Haftalık mini görev: Takım arkadaşından aldığı bir öneriyi not eder.
+* Oyunlaştırma ödülü: Takım Gücü Rozeti
+
+### 8. Hafta: Final Sunumu
+
+* Konu: Döner kanat uçuş prensibi maketi sunumu
+* Amaç: Öğrencilerin öğrendiklerini paylaşması
+* Etkinlik: Her takımın maketini ve çalışma mantığını sunması
+* Öğrenci kazanımı: Ürettiği modeli açıklayarak sunum becerisi geliştirir.
+* Haftalık mini görev: “Ben bu atölyede ne öğrendim?” kısa değerlendirme yazısı
+* Oyunlaştırma ödülü: Genç Havacılık Mühendisi Rozeti
+
+## 6. Örnek Final Projesi
+
+Döner kanat uçuş prensibini gösteren güvenli bir karton ve kağıt maket. Öğrenci, makette rotor, gövde, denge noktası ve güvenlik unsurlarını açıklar.
+
+## 7. Gerekli Malzemeler
+
+* Karton
+* Kağıt
+* Pipet
+* Makas
+* Bant
+* Yapıştırıcı
+* Renkli kalemler
+* Cetvel
+* Basit görsel şablonlar
+* Öğretmen kontrolünde kullanılabilecek düşük güçlü mini pervane örneği
+
+## 8. Güvenlik ve Uygulama Notları
+
+* Gerçek dron uçuşu zorunlu değildir.
+* Açıkta dönen güçlü motorlar kullanılmamalıdır.
+* Kesici aletler öğretmen kontrolünde kullanılmalıdır.
+* Öğrenciler pervane ve döner parçalar konusunda uyarılmalıdır.
+* Maketler sınıf içinde güvenli mesafeyle test edilmelidir.
+* Öncelik uçuş yaptırmak değil, prensibi güvenli şekilde anlamaktır.
+
+## 9. Ölçme ve Değerlendirme
+
+* Derse düzenli katılım
+* Haftalık mini görevleri tamamlama
+* Takım çalışmasına uyum
+* Güvenlik kurallarına uyma
+* Maket tasarım sürecine katkı
+* Problem çözme ve iyileştirme becerisi
+* Final sunumunda konuyu açıklayabilme
+
+## 10. Oyunlaştırma Önerileri
+
+* Hava Aracı Kaşifi Rozeti
+* Rotor Ustası Rozeti
+* Denge Mühendisi Rozeti
+* Güvenlik Lideri Rozeti
+* Mini Tasarımcı Rozeti
+* Takım Gücü Rozeti
+* Genç Havacılık Mühendisi Madalyası
+* 100 Elmas: Güvenlik kurallarına eksiksiz uyan takımlara
+* 150 Elmas: En iyi takım çalışması gösteren gruba
+* 200 Elmas: En açıklayıcı final sunumuna
+
+## 11. Web Sitesinde Kullanılacak Kısa Özet
+
+Döner Kanat Atölyesi’nde öğrenciler helikopter ve dronların çalışma mantığını güvenli maketler ve eğlenceli etkinliklerle keşfeder. Kaldırma kuvveti, denge ve rotor sistemi gibi temel kavramları uygulamalı şekilde öğrenirler.
+
+---
+
+# 2. Sabit Kanat Atölyesi
+
+## 1. Atölye Adı
+
+Sabit Kanat Atölyesi
+
+## 2. Kısa Tanıtım Metni
+
+Sabit Kanat Atölyesi, öğrencilerin uçakların nasıl havada kaldığını ve kanat tasarımının uçuşa etkisini keşfetmesini sağlar. Öğrenciler kağıt uçaklar, köpük maketler ve güvenli sınıf içi deneylerle aerodinamik düşünmeyi öğrenir.
+
+## 3. Bu Atölye Kimler İçin Uygun?
+
+* Uçaklara ve havacılığa ilgi duyan öğrenciler
+* Tasarım yapmayı seven öğrenciler
+* Deney yapmaktan hoşlanan öğrenciler
+* Fen bilimleri ve matematiğe meraklı öğrenciler
+* Takım halinde üretim yapmayı seven öğrenciler
+
+## 4. Öğrenci Bu Atölyede Ne Öğrenecek?
+
+* Sabit kanatlı uçakların temel parçalarını tanır.
+* Kanat, gövde, kuyruk ve denge kavramlarını öğrenir.
+* Basit uçuş denemeleriyle gözlem yapar.
+* Tasarım değişikliklerinin uçuşa etkisini fark eder.
+* Verileri karşılaştırır ve sonuç çıkarır.
+* Güvenli test alanı kullanmayı öğrenir.
+
+## 5. 8 Haftalık Müfredat
+
+### 1. Hafta: Uçakları Tanıyalım
+
+* Konu: Sabit kanatlı hava araçlarının temel özellikleri
+* Amaç: Öğrencilerin uçak parçalarını tanıması
+* Etkinlik: Uçak görselleri üzerinden kanat, gövde ve kuyruk bölümlerinin incelenmesi
+* Öğrenci kazanımı: Sabit kanatlı araçların temel parçalarını adlandırır.
+* Haftalık mini görev: Sevdiği bir uçağın görselini bulup temel parçalarını işaretler.
+* Oyunlaştırma ödülü: Genç Havacı Rozeti
+
+### 2. Hafta: Uçaklar Nasıl Havada Kalır?
+
+* Konu: Kaldırma kuvveti, sürükleme, ağırlık ve itki
+* Amaç: Uçuşun temel kuvvetlerini sade şekilde açıklamak
+* Etkinlik: Kağıt ve hava akımı gözlemleriyle basit kaldırma kuvveti deneyi
+* Öğrenci kazanımı: Uçuşta etkili olan temel kuvvetleri tanır.
+* Haftalık mini görev: Dört uçuş kuvvetini küçük bir şema ile çizer.
+* Oyunlaştırma ödülü: Uçuş Kuvvetleri Rozeti
+
+### 3. Hafta: Kağıt Uçak Deneyleri
+
+* Konu: Kanat şeklinin uçuşa etkisi
+* Amaç: Farklı tasarımların uçuş mesafesine etkisini gözlemlemek
+* Etkinlik: Farklı kağıt uçak modelleri yapma ve güvenli alanda test etme
+* Öğrenci kazanımı: Tasarım değişikliklerinin sonucu etkilediğini fark eder.
+* Haftalık mini görev: En iyi uçan modelini çizip neden iyi uçtuğunu yazar.
+* Oyunlaştırma ödülü: Kağıt Pilot Rozeti
+
+### 4. Hafta: Denge ve Ağırlık Merkezi
+
+* Konu: Uçakta denge ve ağırlık merkezi
+* Amaç: Dengenin uçuş üzerindeki etkisini göstermek
+* Etkinlik: Ataş veya küçük ağırlıklarla kağıt uçak denge denemesi
+* Öğrenci kazanımı: Ağırlık merkezinin uçuşu nasıl değiştirdiğini gözlemler.
+* Haftalık mini görev: Uçağın burnuna ağırlık eklenince ne olduğunu açıklar.
+* Oyunlaştırma ödülü: Denge Pilotu Rozeti
+
+### 5. Hafta: Sabit Kanat Model Tasarımı
+
+* Konu: Basit model uçak planlama
+* Amaç: Öğrencilerin kendi güvenli model uçak tasarımını oluşturması
+* Etkinlik: Karton veya köpük tabak malzemeden model planı hazırlama
+* Öğrenci kazanımı: Kanat, gövde ve kuyruk parçalarını planlar.
+* Haftalık mini görev: Model uçağı için tasarım çizimi hazırlar.
+* Oyunlaştırma ödülü: Model Tasarımcısı Rozeti
+
+### 6. Hafta: Model Üretimi
+
+* Konu: Basit sabit kanat maketi yapımı
+* Amaç: Tasarımı güvenli bir makete dönüştürmek
+* Etkinlik: Karton, köpük ve bant kullanarak model üretimi
+* Öğrenci kazanımı: Planladığı modeli üretir.
+* Haftalık mini görev: Modelinde kullandığı parçaları isimlendirir.
+* Oyunlaştırma ödülü: Mini Uçak Mühendisi Rozeti
+
+### 7. Hafta: Test ve İyileştirme
+
+* Konu: Güvenli uçuş testi ve tasarım geliştirme
+* Amaç: Öğrencilerin ölçme, karşılaştırma ve iyileştirme yapması
+* Etkinlik: Sınıf içinde belirlenen güvenli alanda uçuş mesafesi testi
+* Öğrenci kazanımı: Deneme sonuçlarına göre tasarımını geliştirir.
+* Haftalık mini görev: İlk test ve son test arasındaki farkı not eder.
+* Oyunlaştırma ödülü: Test Pilotu Rozeti
+
+### 8. Hafta: Final Sunumu
+
+* Konu: Sabit kanat model tasarımı sunumu
+* Amaç: Öğrencilerin modelini ve tasarım kararlarını açıklaması
+* Etkinlik: Her takımın modelini sergilemesi ve kısa sunum yapması
+* Öğrenci kazanımı: Tasarım sürecini ve öğrendiklerini ifade eder.
+* Haftalık mini görev: Kendi modelinin en güçlü yönünü yazar.
+* Oyunlaştırma ödülü: Sabit Kanat Uzmanı Rozeti
+
+## 6. Örnek Final Projesi
+
+Karton veya köpük malzemelerle hazırlanmış güvenli bir sabit kanat model uçağı. Öğrenci, kanat yapısı, denge noktası ve uçuş testlerinden elde ettiği sonuçları açıklar.
+
+## 7. Gerekli Malzemeler
+
+* A4 kağıt
+* Karton
+* Köpük tabak veya ince maket köpüğü
+* Bant
+* Yapıştırıcı
+* Ataş
+* Makas
+* Cetvel
+* Renkli kalemler
+* Basit ölçüm çizelgesi
+
+## 8. Güvenlik ve Uygulama Notları
+
+* Modeller sınıf içinde koşarak fırlatılmamalıdır.
+* Test alanı öğretmen tarafından belirlenmelidir.
+* Öğrenciler birbirlerine doğru uçak fırlatmamalıdır.
+* Kesici aletler kontrollü kullanılmalıdır.
+* Sert, sivri veya ağır parçalar kullanılmamalıdır.
+* Amaç yarıştan çok güvenli deney ve öğrenmedir.
+
+## 9. Ölçme ve Değerlendirme
+
+* Derse katılım
+* Haftalık görevleri tamamlama
+* Tasarım sürecine aktif katılım
+* Test sonuçlarını yorumlama
+* Güvenlik kurallarına uyma
+* Takım çalışması
+* Final model ve sunum kalitesi
+
+## 10. Oyunlaştırma Önerileri
+
+* Genç Havacı Rozeti
+* Uçuş Kuvvetleri Rozeti
+* Kağıt Pilot Rozeti
+* Denge Pilotu Rozeti
+* Model Tasarımcısı Rozeti
+* Test Pilotu Rozeti
+* Sabit Kanat Uzmanı Madalyası
+* 100 Elmas: En düzenli tasarım çizimine
+* 150 Elmas: En iyi gözlem notlarına
+* 200 Elmas: En güvenli ve açıklayıcı final projesine
+
+## 11. Web Sitesinde Kullanılacak Kısa Özet
+
+Sabit Kanat Atölyesi’nde öğrenciler uçakların nasıl havada kaldığını deneyerek öğrenir. Kağıt uçaklar ve güvenli model tasarımlarıyla aerodinamik, denge ve tasarım becerilerini geliştirirler.
+
+---
+
+# 3. FPV Dron Pilotluğu Atölyesi
+
+## 1. Atölye Adı
+
+FPV Dron Pilotluğu Atölyesi
+
+## 2. Kısa Tanıtım Metni
+
+FPV Dron Pilotluğu Atölyesi, öğrencilerin dron teknolojisini güvenli ve kontrollü bir şekilde tanımasını sağlar. Öğrenciler gerçek uçuş yerine simülasyon, parkur planlama ve temel pilotaj becerileri üzerinden dron kullanımını öğrenir.
+
+## 3. Bu Atölye Kimler İçin Uygun?
+
+* Dronlara ve uçuş teknolojilerine meraklı öğrenciler
+* Simülasyon ve oyun tabanlı öğrenmeyi seven öğrenciler
+* Dikkat, refleks ve yön bulma becerilerini geliştirmek isteyen öğrenciler
+* Takım görevlerinde yer almayı seven öğrenciler
+* Teknolojiyi güvenli kullanmayı öğrenmek isteyen öğrenciler
+
+## 4. Öğrenci Bu Atölyede Ne Öğrenecek?
+
+* FPV kavramını ve dron kullanım alanlarını öğrenir.
+* Dron parçalarını temel düzeyde tanır.
+* Güvenli pilotaj kurallarını öğrenir.
+* Simülasyon üzerinden yön, hız ve denge çalışmaları yapar.
+* Parkur okuma ve görev planlama becerisi kazanır.
+* Teknoloji kullanımında sorumluluk bilinci geliştirir.
+
+## 5. 8 Haftalık Müfredat
+
+### 1. Hafta: FPV Dron Nedir?
+
+* Konu: FPV dronların tanıtımı ve kullanım alanları
+* Amaç: Öğrencilerin FPV kavramını güvenli bir şekilde tanıması
+* Etkinlik: FPV uçuş videoları ve kullanım senaryoları üzerine sohbet
+* Öğrenci kazanımı: FPV dronların ne amaçla kullanıldığını açıklar.
+* Haftalık mini görev: Dronların faydalı kullanıldığı bir alanı araştırır.
+* Oyunlaştırma ödülü: FPV Kaşifi Rozeti
+
+### 2. Hafta: Dronun Temel Parçaları
+
+* Konu: Gövde, pervane, motor, batarya, kamera ve kontrol sistemi
+* Amaç: Dron parçalarını ortaokul düzeyinde tanıtmak
+* Etkinlik: Dron parça kartlarıyla eşleştirme oyunu
+* Öğrenci kazanımı: Temel dron parçalarını görevleriyle eşleştirir.
+* Haftalık mini görev: Bir dron parça şeması hazırlar.
+* Oyunlaştırma ödülü: Dron Teknisyeni Rozeti
+
+### 3. Hafta: Güvenli Uçuş Kuralları
+
+* Konu: Dron güvenliği ve sorumlu kullanım
+* Amaç: Öğrencilerin güvenlik bilinci kazanması
+* Etkinlik: Güvenli ve güvensiz uçuş senaryolarını tartışma
+* Öğrenci kazanımı: Dron kullanımında temel güvenlik kurallarını sıralar.
+* Haftalık mini görev: 5 maddelik “Güvenli Dron Kullanımı” listesi hazırlar.
+* Oyunlaştırma ödülü: Güvenli Pilot Rozeti
+
+### 4. Hafta: Simülasyonda Temel Kontroller
+
+* Konu: Yön, hız, yükselme, alçalma ve denge
+* Amaç: Gerçek uçuşa geçmeden simülasyonla temel kontrol becerisi kazandırmak
+* Etkinlik: Öğretmen gözetiminde basit FPV simülasyon görevi
+* Öğrenci kazanımı: Simülasyonda temel hareketleri kontrollü şekilde dener.
+* Haftalık mini görev: Simülasyonda en zorlandığı hareketi ve çözümünü yazar.
+* Oyunlaştırma ödülü: Simülasyon Pilotu Rozeti
+
+### 5. Hafta: Parkur Planlama
+
+* Konu: Dron parkuru, görev çizgisi ve engel planlama
+* Amaç: Öğrencilerin uçuş öncesi plan yapmasını sağlamak
+* Etkinlik: Kağıt üzerinde güvenli mini dron parkuru tasarlama
+* Öğrenci kazanımı: Uçuş parkurunu planlamanın önemini kavrar.
+* Haftalık mini görev: Kendi parkur çizimini tamamlar.
+* Oyunlaştırma ödülü: Parkur Mimarı Rozeti
+
+### 6. Hafta: Görev Odaklı Simülasyon
+
+* Konu: Hedefe gitme, dönüş yapma ve kontrollü iniş
+* Amaç: Öğrencilerin görev tamamlama becerisi kazanması
+* Etkinlik: Simülasyonda başlangıç, hedef ve iniş noktası görevi
+* Öğrenci kazanımı: Simülasyon ortamında görev sırasını takip eder.
+* Haftalık mini görev: Görev sırasında yaptığı bir hatayı ve çözümünü not eder.
+* Oyunlaştırma ödülü: Görev Pilotu Rozeti
+
+### 7. Hafta: Takım Görevi ve Rol Paylaşımı
+
+* Konu: Pilot, gözlemci, güvenlik sorumlusu ve görev kaydedici rolleri
+* Amaç: FPV görevlerinde takım çalışmasının önemini göstermek
+* Etkinlik: Takımlar halinde simülasyon görevi planlama ve uygulama
+* Öğrenci kazanımı: Takım içinde rol alır ve görev paylaşımı yapar.
+* Haftalık mini görev: Takımındaki rolünü ve katkısını yazar.
+* Oyunlaştırma ödülü: Takım Pilotu Rozeti
+
+### 8. Hafta: Final FPV Simülasyon Görevi
+
+* Konu: Güvenli FPV görev sunumu
+* Amaç: Öğrencilerin öğrendiklerini simülasyon ve sunumla göstermesi
+* Etkinlik: Takımların tasarladığı parkuru ve simülasyon görevini sunması
+* Öğrenci kazanımı: Güvenli pilotaj, görev planlama ve takım çalışmasını gösterir.
+* Haftalık mini görev: FPV pilotluğu için en önemli 3 güvenlik kuralını yazar.
+* Oyunlaştırma ödülü: Genç FPV Pilotu Madalyası
+
+## 6. Örnek Final Projesi
+
+FPV simülasyonunda tamamlanacak güvenli bir mini görev parkuru. Öğrenciler parkur çizimini, görev adımlarını, güvenlik kurallarını ve simülasyon deneyimlerini sunar.
+
+## 7. Gerekli Malzemeler
+
+* Bilgisayar veya tablet
+* Uygun ve güvenli dron simülasyon yazılımı
+* Kağıt
+* Kalem
+* Parkur çizim şablonu
+* Dron parça kartları
+* Projeksiyon veya akıllı tahta
+* Öğretmen kontrolünde propeller korumalı mini eğitim dronu kullanılabilir
+
+## 8. Güvenlik ve Uygulama Notları
+
+* Atölyede gerçek FPV uçuş zorunlu değildir.
+* Gerçek dron kullanılacaksa sadece küçük, korumalı ve kapalı alan eğitim dronu tercih edilmelidir.
+* Pervanelere el yaklaştırılmamalıdır.
+* Öğrenciler dronu izinsiz çalıştırmamalıdır.
+* Simülasyon temel yöntem olarak kullanılmalıdır.
+* Dron gizlilik ve güvenlik kuralları mutlaka anlatılmalıdır.
+* Okul bahçesinde uçuş yapılacaksa öğretmen, idare ve güvenlik onayı alınmalıdır.
+
+## 9. Ölçme ve Değerlendirme
+
+* Simülasyon görevlerine katılım
+* Güvenlik kurallarına uyma
+* Parkur planlama becerisi
+* Takım içindeki rolünü yerine getirme
+* Görev sırasını takip etme
+* Problem çözme
+* Final sunumu ve görev açıklaması
+
+## 10. Oyunlaştırma Önerileri
+
+* FPV Kaşifi Rozeti
+* Dron Teknisyeni Rozeti
+* Güvenli Pilot Rozeti
+* Simülasyon Pilotu Rozeti
+* Parkur Mimarı Rozeti
+* Görev Pilotu Rozeti
+* Genç FPV Pilotu Madalyası
+* 100 Elmas: En güvenli parkur tasarımına
+* 150 Elmas: En iyi takım görev paylaşımına
+* 200 Elmas: En başarılı simülasyon görev sunumuna
+
+## 11. Web Sitesinde Kullanılacak Kısa Özet
+
+FPV Dron Pilotluğu Atölyesi’nde öğrenciler dron teknolojisini güvenli simülasyonlar ve görev planlama etkinlikleriyle öğrenir. Pilotaj, dikkat, takım çalışması ve sorumlu teknoloji kullanımı becerileri kazanırlar.
+
+---
+
+# 4. Proje Yönetmeliği Atölyesi
+
+## 1. Atölye Adı
+
+Proje Yönetmeliği Atölyesi
+
+## 2. Kısa Tanıtım Metni
+
+Proje Yönetmeliği Atölyesi, öğrencilerin bir fikri nasıl projeye dönüştüreceğini, planlayacağını, görev paylaşımı yapacağını ve sunacağını öğreten uygulamalı bir atölyedir. Öğrenciler yarışma, okul projesi veya sosyal sorumluluk çalışmaları için temel proje hazırlama becerileri kazanır.
+
+## 3. Bu Atölye Kimler İçin Uygun?
+
+* Proje üretmek isteyen öğrenciler
+* Takım çalışmasını seven öğrenciler
+* Fikirlerini düzenli şekilde sunmak isteyen öğrenciler
+* Yarışmalara katılmayı düşünen öğrenciler
+* Planlama ve sunum becerisini geliştirmek isteyen öğrenciler
+
+## 4. Öğrenci Bu Atölyede Ne Öğrenecek?
+
+* Proje fikri geliştirmeyi öğrenir.
+* Problem, amaç, hedef kitle ve çözüm kavramlarını tanır.
+* Basit proje planı hazırlar.
+* Görev dağılımı yapar.
+* Zaman çizelgesi oluşturur.
+* Proje dosyası ve sunum hazırlamayı öğrenir.
+* Etik, güvenlik ve sorumluluk konularını fark eder.
+
+## 5. 8 Haftalık Müfredat
+
+### 1. Hafta: Proje Nedir?
+
+* Konu: Proje kavramı ve proje türleri
+* Amaç: Öğrencilerin proje mantığını anlaması
+* Etkinlik: Günlük hayattan proje örnekleri inceleme
+* Öğrenci kazanımı: Proje ile sıradan fikir arasındaki farkı açıklar.
+* Haftalık mini görev: Çevresinde çözülmesini istediği bir problem yazar.
+* Oyunlaştırma ödülü: Fikir Avcısı Rozeti
+
+### 2. Hafta: Problem Belirleme
+
+* Konu: Problem, ihtiyaç ve hedef kitle
+* Amaç: Öğrencilerin proje fikrinin bir probleme dayanması gerektiğini öğrenmesi
+* Etkinlik: Okul, çevre ve günlük yaşamdan problem listesi oluşturma
+* Öğrenci kazanımı: Bir problemi açık ve anlaşılır şekilde tanımlar.
+* Haftalık mini görev: Seçtiği problem için “Kim etkileniyor?” sorusunu cevaplar.
+* Oyunlaştırma ödülü: Problem Dedektifi Rozeti
+
+### 3. Hafta: Çözüm Fikri Geliştirme
+
+* Konu: Beyin fırtınası ve çözüm önerileri
+* Amaç: Öğrencilerin yaratıcı çözüm fikirleri üretmesi
+* Etkinlik: Takım halinde 3 farklı çözüm fikri geliştirme
+* Öğrenci kazanımı: Bir probleme birden fazla çözüm üretir.
+* Haftalık mini görev: En iyi çözüm fikrini neden seçtiğini yazar.
+* Oyunlaştırma ödülü: Çözüm Tasarımcısı Rozeti
+
+### 4. Hafta: Proje Planı Hazırlama
+
+* Konu: Amaç, yöntem, görevler ve zaman planı
+* Amaç: Projeyi uygulanabilir adımlara bölmek
+* Etkinlik: Basit proje planı şablonu doldurma
+* Öğrenci kazanımı: Proje sürecini adımlara ayırır.
+* Haftalık mini görev: Takımı için haftalık görev çizelgesi hazırlar.
+* Oyunlaştırma ödülü: Planlama Uzmanı Rozeti
+
+### 5. Hafta: Görev Paylaşımı ve Takım Rolleri
+
+* Konu: Takım içinde görev dağılımı
+* Amaç: Her öğrencinin projede aktif rol almasını sağlamak
+* Etkinlik: Lider, araştırmacı, tasarımcı, sunucu ve raporlayıcı rolleri belirleme
+* Öğrenci kazanımı: Takım içinde sorumluluk alır.
+* Haftalık mini görev: Kendi rolünü ve sorumluluğunu yazar.
+* Oyunlaştırma ödülü: Takım Liderliği Rozeti
+
+### 6. Hafta: Proje Dosyası ve Görsel Hazırlama
+
+* Konu: Proje raporu, afiş ve sunum düzeni
+* Amaç: Projeyi anlaşılır ve düzenli şekilde ifade etmek
+* Etkinlik: Proje kapak sayfası, kısa özet ve basit afiş hazırlama
+* Öğrenci kazanımı: Projesini yazılı ve görsel olarak düzenler.
+* Haftalık mini görev: Projesi için 5 cümlelik kısa tanıtım metni yazar.
+* Oyunlaştırma ödülü: Proje Yazarı Rozeti
+
+### 7. Hafta: Sunum Provası
+
+* Konu: Etkili sunum ve geri bildirim
+* Amaç: Öğrencilerin projelerini özgüvenle anlatması
+* Etkinlik: Takımların kısa sunum provası yapması ve arkadaşlarından geri bildirim alması
+* Öğrenci kazanımı: Sunum yapar ve geri bildirimle sunumunu geliştirir.
+* Haftalık mini görev: Aldığı bir geri bildirimi projesine uygular.
+* Oyunlaştırma ödülü: Sunum Yıldızı Rozeti
+
+### 8. Hafta: Final Proje Sunumu
+
+* Konu: Proje dosyası ve takım sunumu
+* Amaç: Öğrencilerin proje sürecini tamamlaması
+* Etkinlik: Her takımın proje dosyasını, afişini ve sunumunu paylaşması
+* Öğrenci kazanımı: Bir fikri proje formatında sunar.
+* Haftalık mini görev: Proje sürecinde öğrendiği en önemli şeyi yazar.
+* Oyunlaştırma ödülü: Genç Proje Geliştirici Madalyası
+
+## 6. Örnek Final Projesi
+
+Bir okul veya çevre problemine yönelik proje sunum dosyası. Öğrenciler problem, çözüm, hedef kitle, görev dağılımı, zaman planı ve beklenen faydayı içeren basit bir proje dosyası hazırlar.
+
+## 7. Gerekli Malzemeler
+
+* Proje planı şablonu
+* Kağıt
+* Kalem
+* Renkli kalemler
+* Bilgisayar veya tablet
+* Sunum hazırlama aracı
+* Afiş kağıdı
+* Yapışkan not kağıtları
+* Değerlendirme formu
+
+## 8. Güvenlik ve Uygulama Notları
+
+* Öğrencilerin projeleri yaş düzeyine uygun olmalıdır.
+* Tehlikeli deney, kimyasal madde veya kesici-delici ekipman gerektiren projeler seçilmemelidir.
+* Projelerde etik kurallar, izin alma ve kişisel verilerin korunması basit şekilde anlatılmalıdır.
+* Takım içinde tüm öğrencilerin görev almasına dikkat edilmelidir.
+* Öğrenciler sadece yarışma başarısına değil, öğrenme ve üretme sürecine odaklanmalıdır.
+
+## 9. Ölçme ve Değerlendirme
+
+* Problem tanımının açıklığı
+* Çözüm fikrinin uygulanabilirliği
+* Proje planının düzeni
+* Takım çalışması
+* Görev paylaşımı
+* Haftalık görevlerin tamamlanması
+* Final dosyası
+* Sunum becerisi
+* Geri bildirime göre geliştirme yapma
+
+## 10. Oyunlaştırma Önerileri
+
+* Fikir Avcısı Rozeti
+* Problem Dedektifi Rozeti
+* Çözüm Tasarımcısı Rozeti
+* Planlama Uzmanı Rozeti
+* Takım Liderliği Rozeti
+* Proje Yazarı Rozeti
+* Sunum Yıldızı Rozeti
+* Genç Proje Geliştirici Madalyası
+* 100 Elmas: En açık problem tanımına
+* 150 Elmas: En iyi takım iş birliğine
+* 200 Elmas: En uygulanabilir proje fikrine
+
+## 11. Web Sitesinde Kullanılacak Kısa Özet
+
+Proje Yönetmeliği Atölyesi’nde öğrenciler bir fikri projeye dönüştürmeyi öğrenir. Problem belirleme, çözüm geliştirme, görev paylaşımı, proje dosyası hazırlama ve sunum becerileri kazanırlar.
+
+---
+
+# 5. Yapay Zeka Atölyesi
+
+## 1. Atölye Adı
+
+Yapay Zeka Atölyesi
+
+## 2. Kısa Tanıtım Metni
+
+Yapay Zeka Atölyesi, öğrencilerin yapay zekayı günlük yaşam örnekleriyle tanımasını ve basit uygulamalarla deneyimlemesini sağlar. Öğrenciler görsel tanıma, metin üretimi, veri, algoritma ve etik kullanım gibi konuları yaşlarına uygun şekilde öğrenir.
+
+## 3. Bu Atölye Kimler İçin Uygun?
+
+* Teknolojiye ve kodlamaya meraklı öğrenciler
+* Yapay zekanın nasıl çalıştığını öğrenmek isteyen öğrenciler
+* Dijital araçları üretim amacıyla kullanmak isteyen öğrenciler
+* Problem çözmeyi seven öğrenciler
+* Yaratıcı fikir geliştirmek isteyen öğrenciler
+
+## 4. Öğrenci Bu Atölyede Ne Öğrenecek?
+
+* Yapay zekanın ne olduğunu basit örneklerle öğrenir.
+* Veri, algoritma ve model kavramlarını tanır.
+* Yapay zekanın günlük yaşamdaki kullanım alanlarını keşfeder.
+* Basit yapay zeka etkinlikleri yapar.
+* Yapay zekayı güvenli ve etik kullanmayı öğrenir.
+* Kendi mini yapay zeka fikir projesini geliştirir.
+
+## 5. 8 Haftalık Müfredat
+
+### 1. Hafta: Yapay Zeka Nedir?
+
+* Konu: Yapay zekanın temel tanımı ve günlük hayattaki örnekleri
+* Amaç: Öğrencilerin yapay zekayı korkmadan ve doğru şekilde tanıması
+* Etkinlik: Telefon, oyun, arama motoru, öneri sistemi gibi örnekleri tartışma
+* Öğrenci kazanımı: Yapay zekanın günlük hayattaki örneklerini söyler.
+* Haftalık mini görev: Evde veya okulda karşılaştığı bir yapay zeka örneğini yazar.
+* Oyunlaştırma ödülü: Yapay Zeka Kaşifi Rozeti
+
+### 2. Hafta: Veri Nedir?
+
+* Konu: Veri, örnek, sınıflandırma ve karar verme
+* Amaç: Yapay zekanın veriyle öğrendiğini göstermek
+* Etkinlik: Meyve kartlarını renk, şekil ve türlerine göre sınıflandırma oyunu
+* Öğrenci kazanımı: Verilerin sınıflandırılarak anlamlı hale getirilebileceğini fark eder.
+* Haftalık mini görev: 10 nesneyi kendi belirlediği özelliklere göre gruplandırır.
+* Oyunlaştırma ödülü: Veri Dedektifi Rozeti
+
+### 3. Hafta: Algoritma Mantığı
+
+* Konu: Adım adım düşünme ve algoritma
+* Amaç: Yapay zekanın karar süreçlerine giriş yapmak
+* Etkinlik: “Bir robota sandviç yaptırma” algoritma oyunu
+* Öğrenci kazanımı: Bir işi adımlara ayırarak ifade eder.
+* Haftalık mini görev: Günlük bir işi algoritma adımlarıyla yazar.
+* Oyunlaştırma ödülü: Algoritma Ustası Rozeti
+
+### 4. Hafta: Görsel Tanıma Mantığı
+
+* Konu: Görsellerden öğrenme ve sınıflandırma
+* Amaç: Yapay zekanın görselleri nasıl ayırt edebildiğini sade şekilde anlatmak
+* Etkinlik: Öğrencilerin çizdiği basit şekilleri sınıflandırma çalışması
+* Öğrenci kazanımı: Görsel özelliklerin sınıflandırmada kullanılabileceğini açıklar.
+* Haftalık mini görev: Bir nesneyi tanımak için hangi özelliklere bakılacağını yazar.
+* Oyunlaştırma ödülü: Görsel Tanıma Rozeti
+
+### 5. Hafta: Yapay Zeka ile Metin ve Fikir Üretimi
+
+* Konu: Yapay zeka destekli metin üretimi ve doğru kullanım
+* Amaç: Yapay zekayı kopya aracı değil, fikir destek aracı olarak tanıtmak
+* Etkinlik: Öğretmen kontrolünde örnek komut yazma ve çıktıyı değerlendirme
+* Öğrenci kazanımı: Yapay zekaya açık ve doğru soru sormayı öğrenir.
+* Haftalık mini görev: Bir proje fikri için 3 doğru soru hazırlar.
+* Oyunlaştırma ödülü: Komut Yazarı Rozeti
+
+### 6. Hafta: Yapay Zekada Etik ve Güvenlik
+
+* Konu: Doğru bilgi, gizlilik, önyargı ve sorumlu kullanım
+* Amaç: Öğrencilerin yapay zekayı güvenli ve bilinçli kullanması
+* Etkinlik: Doğru-yanlış senaryo kartlarıyla etik kullanım tartışması
+* Öğrenci kazanımı: Yapay zeka kullanırken dikkat edilmesi gereken kuralları söyler.
+* Haftalık mini görev: “Yapay zekayı güvenli kullanmanın 5 kuralı” listesi hazırlar.
+* Oyunlaştırma ödülü: Dijital Sorumluluk Rozeti
+
+### 7. Hafta: Mini Yapay Zeka Fikir Projesi
+
+* Konu: Bir probleme yapay zeka destekli çözüm fikri geliştirme
+* Amaç: Öğrencilerin yapay zekayı faydalı bir çözüm aracı olarak düşünmesi
+* Etkinlik: Takımlar halinde okul, çevre veya günlük yaşam problemi seçme
+* Öğrenci kazanımı: Yapay zeka destekli basit bir çözüm fikri üretir.
+* Haftalık mini görev: Proje fikrinin problem, çözüm ve hedef kitlesini yazar.
+* Oyunlaştırma ödülü: AI Proje Tasarımcısı Rozeti
+
+### 8. Hafta: Final Yapay Zeka Proje Sunumu
+
+* Konu: Yapay zeka destekli mini fikir projesi sunumu
+* Amaç: Öğrencilerin öğrendiklerini proje fikrine dönüştürmesi
+* Etkinlik: Her takımın yapay zeka fikrini afiş veya sunumla anlatması
+* Öğrenci kazanımı: Yapay zekayı faydalı, güvenli ve etik bir çözüm olarak sunar.
+* Haftalık mini görev: Yapay zeka hakkında değişen düşüncesini yazar.
+* Oyunlaştırma ödülü: Yapay Zeka Geliştiricisi Madalyası
+
+## 6. Örnek Final Projesi
+
+Yapay zeka destekli mini fikir projesi. Örneğin; okulda geri dönüşüm kutularını tanıyan sistem fikri, öğrencilerin ders tekrarına yardımcı olan akıllı asistan fikri veya kayıp eşya bulmaya yardımcı öneri sistemi.
+
+## 7. Gerekli Malzemeler
+
+* Bilgisayar veya tablet
+* İnternet bağlantısı
+* Akıllı tahta veya projeksiyon
+* Kağıt
+* Kalem
+* Renkli kartlar
+* Yapay zeka kullanım senaryo kartları
+* Proje fikir şablonu
+* Etik kullanım kontrol listesi
+
+## 8. Güvenlik ve Uygulama Notları
+
+* Öğrencilerden kişisel veri, fotoğraf veya özel bilgi paylaşmaları istenmemelidir.
+* Yapay zeka çıktılarının her zaman doğru olmayabileceği anlatılmalıdır.
+* Kopya, intihal ve izinsiz kullanım konuları sade şekilde açıklanmalıdır.
+* Öğretmen gözetimi olmadan çevrim içi araç kullanılmamalıdır.
+* Yapay zeka bir “yardımcı araç” olarak tanıtılmalı, öğrencinin yerine düşünen bir araç gibi gösterilmemelidir.
+
+## 9. Ölçme ve Değerlendirme
+
+* Derse katılım
+* Haftalık mini görevler
+* Veri ve algoritma kavramlarını açıklayabilme
+* Etik kullanım kurallarına uyma
+* Takım çalışması
+* Yapay zeka fikir projesinin uygulanabilirliği
+* Final sunumu
+* Problem çözme ve yaratıcılık
+
+## 10. Oyunlaştırma Önerileri
+
+* Yapay Zeka Kaşifi Rozeti
+* Veri Dedektifi Rozeti
+* Algoritma Ustası Rozeti
+* Görsel Tanıma Rozeti
+* Komut Yazarı Rozeti
+* Dijital Sorumluluk Rozeti
+* AI Proje Tasarımcısı Rozeti
+* Yapay Zeka Geliştiricisi Madalyası
+* 100 Elmas: En iyi etik kullanım listesine
+* 150 Elmas: En yaratıcı yapay zeka fikrine
+* 200 Elmas: En faydalı sosyal sorumluluk odaklı projeye
+
+## 11. Web Sitesinde Kullanılacak Kısa Özet
+
+Yapay Zeka Atölyesi’nde öğrenciler yapay zekayı günlük yaşam örnekleriyle tanır ve güvenli kullanımını öğrenir. Veri, algoritma, etik kullanım ve mini proje geliştirme etkinlikleriyle teknolojiye üretici gözle bakarlar.
+
+---
+
+# 6. Roket Atölyesi
+
+## 1. Atölye Adı
+
+Roket Atölyesi
+
+## 2. Kısa Tanıtım Metni
+
+Roket Atölyesi, öğrencilerin roketlerin temel çalışma mantığını güvenli maketler, çizimler ve sınıf içi deneylerle öğrenmesini sağlar. Bu atölyede gerçek roket motoru, yanıcı madde veya tehlikeli fırlatma kullanılmaz; öğrenciler güvenli modelleme ve tasarım odaklı çalışır.
+
+## 3. Bu Atölye Kimler İçin Uygun?
+
+* Uzay, roket ve havacılığa ilgi duyan öğrenciler
+* Maket tasarımı yapmayı seven öğrenciler
+* Fen bilimleri ve mühendisliğe meraklı öğrenciler
+* Takım çalışmasını seven öğrenciler
+* Güvenli deney ve gözlem yapmayı öğrenmek isteyen öğrenciler
+
+## 4. Öğrenci Bu Atölyede Ne Öğrenecek?
+
+* Roketin temel bölümlerini tanır.
+* İtki, denge, ağırlık ve hava direnci kavramlarını öğrenir.
+* Güvenli model roket tasarımı yapar.
+* Kanatçık, burun konisi ve gövde tasarımının önemini kavrar.
+* Takım çalışmasıyla ürün geliştirir.
+* Güvenlik kurallarına uygun çalışma alışkanlığı kazanır.
+
+## 5. 8 Haftalık Müfredat
+
+### 1. Hafta: Roketleri Tanıyalım
+
+* Konu: Roket nedir, nerelerde kullanılır?
+* Amaç: Öğrencilerin roket teknolojisini güvenli ve yaş düzeyine uygun şekilde tanıması
+* Etkinlik: Roket görselleri ve uzay görevleri üzerine sohbet
+* Öğrenci kazanımı: Roketlerin kullanım alanlarını açıklar.
+* Haftalık mini görev: Bir uzay görevi veya roket hakkında kısa bilgi kartı hazırlar.
+* Oyunlaştırma ödülü: Uzay Kaşifi Rozeti
+
+### 2. Hafta: Roketin Temel Parçaları
+
+* Konu: Gövde, burun konisi, kanatçık ve itki bölümü
+* Amaç: Roket parçalarının görevlerini tanıtmak
+* Etkinlik: Roket parça eşleştirme kartları
+* Öğrenci kazanımı: Roketin temel parçalarını görevleriyle eşleştirir.
+* Haftalık mini görev: Basit bir roket şeması çizer ve parçalarını isimlendirir.
+* Oyunlaştırma ödülü: Roket Teknisyeni Rozeti
+
+### 3. Hafta: İtki ve Hareket Mantığı
+
+* Konu: Etki-tepki prensibi
+* Amaç: Roketin hareket mantığını güvenli örneklerle anlatmak
+* Etkinlik: Balon roket düzeneğiyle ip üzerinde güvenli hareket gözlemi
+* Öğrenci kazanımı: Etki-tepki prensibini basit örnekle açıklar.
+* Haftalık mini görev: Roketin neden yukarı hareket ettiğini kendi cümleleriyle yazar.
+* Oyunlaştırma ödülü: İtki Kaşifi Rozeti
+
+### 4. Hafta: Denge ve Kanatçık Tasarımı
+
+* Konu: Rokette denge, kanatçık ve yön kontrolü
+* Amaç: Kanatçıkların roketin düzgün ilerlemesine etkisini göstermek
+* Etkinlik: Kağıt roket üzerinde farklı kanatçık tasarımlarını karşılaştırma
+* Öğrenci kazanımı: Kanatçıkların dengeye katkısını fark eder.
+* Haftalık mini görev: 3 farklı kanatçık tasarımı çizer.
+* Oyunlaştırma ödülü: Denge Tasarımcısı Rozeti
+
+### 5. Hafta: Güvenli Model Roket Tasarımı
+
+* Konu: Yanıcı madde içermeyen model roket planlama
+* Amaç: Öğrencilerin güvenli roket maketi tasarlaması
+* Etkinlik: Kağıt, karton ve pipet kullanarak model planı hazırlama
+* Öğrenci kazanımı: Güvenli malzemelerle roket tasarımı planlar.
+* Haftalık mini görev: Roketinin adını, görevini ve tasarım çizimini hazırlar.
+* Oyunlaştırma ödülü: Roket Tasarımcısı Rozeti
+
+### 6. Hafta: Model Roket Üretimi
+
+* Konu: Güvenli roket maketi yapımı
+* Amaç: Tasarlanan roketi makete dönüştürmek
+* Etkinlik: Karton gövde, kağıt burun konisi ve kanatçıklarla model üretimi
+* Öğrenci kazanımı: Roket parçalarını bir araya getirerek model oluşturur.
+* Haftalık mini görev: Modelinde kullandığı parçaların görevini açıklar.
+* Oyunlaştırma ödülü: Uzay Mühendisi Rozeti
+
+### 7. Hafta: Test, Gözlem ve İyileştirme
+
+* Konu: Güvenli sınıf içi test ve tasarım geliştirme
+* Amaç: Öğrencilerin gözlem yaparak tasarımını iyileştirmesi
+* Etkinlik: Kağıt roket veya pipet roketin güvenli mesafeden düşük kuvvetle test edilmesi
+* Öğrenci kazanımı: Test sonucuna göre tasarımında iyileştirme yapar.
+* Haftalık mini görev: Testten sonra roketinde değiştirmek istediği bir şeyi yazar.
+* Oyunlaştırma ödülü: Test Mühendisi Rozeti
+
+### 8. Hafta: Final Roket Tasarım Sunumu
+
+* Konu: Model roket tasarımı ve görev sunumu
+* Amaç: Öğrencilerin güvenli roket modelini açıklaması
+* Etkinlik: Takımların model roketlerini, görev hikayelerini ve tasarım kararlarını sunması
+* Öğrenci kazanımı: Tasarımını bilimsel kavramlarla ilişkilendirerek sunar.
+* Haftalık mini görev: “Roket tasarımında güvenlik neden önemlidir?” sorusunu cevaplar.
+* Oyunlaştırma ödülü: Genç Roket Tasarımcısı Madalyası
+
+## 6. Örnek Final Projesi
+
+Yanıcı madde içermeyen, karton ve kağıttan hazırlanmış güvenli model roket tasarımı. Öğrenciler roketin burun konisi, gövdesi, kanatçıkları ve görev amacını sunar.
+
+## 7. Gerekli Malzemeler
+
+* Karton
+* A4 kağıt
+* Pipet
+* Bant
+* Yapıştırıcı
+* Makas
+* Cetvel
+* Renkli kalemler
+* Balon
+* İp
+* Mandal veya pipet bağlantı aparatı
+* Roket parça şablonları
+
+## 8. Güvenlik ve Uygulama Notları
+
+* Gerçek roket motoru kullanılmamalıdır.
+* Yanıcı, patlayıcı veya basınç riski yüksek malzemeler kullanılmamalıdır.
+* Kimyasal deney yapılmamalıdır.
+* Fırlatma etkinlikleri düşük kuvvetli, sınıf içi ve öğretmen kontrolünde olmalıdır.
+* Öğrenciler birbirine doğru model fırlatmamalıdır.
+* Test alanı açık, güvenli ve kontrollü olmalıdır.
+* Roket atölyesinde amaç tehlikeli fırlatma değil, tasarım ve temel prensipleri öğrenmektir.
+
+## 9. Ölçme ve Değerlendirme
+
+* Güvenlik kurallarına uyma
+* Haftalık görevleri tamamlama
+* Roket parçalarını tanıyabilme
+* Tasarım sürecine katkı
+* Test ve gözlem notları
+* Takım çalışması
+* Model roketin düzeni
+* Final sunumu
+* Problem çözme ve iyileştirme becerisi
+
+## 10. Oyunlaştırma Önerileri
+
+* Uzay Kaşifi Rozeti
+* Roket Teknisyeni Rozeti
+* İtki Kaşifi Rozeti
+* Denge Tasarımcısı Rozeti
+* Roket Tasarımcısı Rozeti
+* Uzay Mühendisi Rozeti
+* Test Mühendisi Rozeti
+* Genç Roket Tasarımcısı Madalyası
+* 100 Elmas: En güvenli model tasarımına
+* 150 Elmas: En yaratıcı görev hikayesine
+* 200 Elmas: En iyi takım sunumuna
+
+## 11. Web Sitesinde Kullanılacak Kısa Özet
+
+Roket Atölyesi’nde öğrenciler roketlerin temel çalışma mantığını güvenli maketler ve sınıf içi etkinliklerle öğrenir. Yanıcı veya tehlikeli malzemeler kullanılmadan tasarım, denge, itki ve sunum becerileri geliştirilir.
+
+---
+
+# Genel Web Sitesi Notu
+
+Bu atölyeler; öğrencilerin STEM, mühendislik, havacılık, yapay zeka ve proje geliştirme alanlarında temel farkındalık kazanmasını hedefler. Tüm etkinlikler ortaokul düzeyine uygun, güvenli, uygulanabilir ve öğretmen gözetiminde yapılabilecek şekilde planlanmıştır.
+
+Öğrenciler 8 hafta sonunda sadece bilgi edinmekle kalmaz; aynı zamanda tasarım yapma, problem çözme, takım çalışması, sunum yapma ve güvenli teknoloji kullanımı becerileri kazanır.

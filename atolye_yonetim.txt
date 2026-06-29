@@ -1,0 +1,1337 @@
+Sen kıdemli bir full-stack yazılım geliştiricisin. Bana ortaokul öğrencileri için atölye yönetim sistemi olan mobil uyumlu bir web portalı geliştirmeni istiyorum.
+
+Proje adı şimdilik: **Atölye Portalı**
+
+Bu sistemde 6 farklı atölye olacak:
+
+1. Döner Kanat
+2. Sabit Kanat
+3. FPV Dron Pilotluğu
+4. Proje Yönetmeliği
+5. Yapay Zeka
+6. Roket
+
+Bu web sitesinde 4 ana yapı olacak:
+
+1. Herkese açık tanıtım sitesi
+2. Öğrenci portalı
+3. Öğretmen portalı
+4. Veli portalı
+5. Gizli admin paneli
+
+Admin paneli ana sayfada görünmeyecek. Admin paneline sadece `/admin` adresinden girilecek.
+
+Eğer mevcut bir proje varsa önce proje yapısını incele ve mevcut teknolojiye uyumlu şekilde geliştir. Eğer proje boşsa modern, temiz, güvenli ve geliştirilebilir bir yapı kur. Tercihen şu teknolojileri kullan:
+
+* Next.js / React tabanlı full-stack yapı
+* TypeScript
+* Tailwind CSS
+* Prisma ORM
+* SQLite veya PostgreSQL uyumlu veritabanı
+* Güvenli parola hashleme
+* Rol bazlı yetkilendirme
+* Mobil öncelikli responsive tasarım
+
+Kod temiz, modüler, geliştirilebilir ve anlaşılır olsun. Projede README dosyası, kurulum adımları, veritabanı migration/seed yapısı ve örnek kullanıcılar da olsun.
+
+---
+
+# 1. Genel Amaç
+
+Bu sistem bir ortaokulda açılacak 6 farklı atölyeyi yönetmek için kullanılacak.
+
+Öğrenciler sisteme kayıt olup giriş yapabilecek. Öğretmenler kendilerine yetki verilen atölyelerde öğrenci kaydı, ödev verme, puanlama, yoklama ve ilerleme takibi yapabilecek. Veliler ise kendilerine verilen özel veli kodu ile sadece kendi çocuklarının durumunu görüntüleyebilecek.
+
+Admin ise sistemdeki her şeyi yönetebilecek.
+
+Site tamamen mobil uyumlu olmalı. Çünkü öğrenciler ve veliler çoğunlukla telefondan kullanacak.
+
+---
+
+# 2. Herkese Açık Ana Site
+
+Kullanıcı giriş yapmadan ana sayfada şunları görmeli:
+
+* Öğrenci Portalı butonu
+* Öğretmen Portalı butonu
+* Veli Portalı butonu
+* Atölyeler bölümü
+* Her atölye için ayrı tanıtım kartı
+* Mobil uyumlu modern tasarım
+* Sade, çocuklara hitap eden, anlaşılır arayüz
+
+Ana sayfada 6 atölye kartı olsun:
+
+* Döner Kanat
+* Sabit Kanat
+* FPV Dron Pilotluğu
+* Proje Yönetmeliği
+* Yapay Zeka
+* Roket
+
+Her atölye kartına tıklandığında detay sayfası açılsın.
+
+Atölye detay sayfasında şunlar olsun:
+
+* Atölye adı
+* Kısa açıklama
+* Bu atölye kimler için uygun?
+* Öğrenciler bu atölyede ne öğrenecek?
+* 8 haftalık müfredat
+* Kazanılacak beceriler
+* Örnek proje çıktısı
+* Kontenjan bilgisi
+* Atölye sorumlusu öğretmenler
+
+Atölye bilgileri giriş yapılmadan herkes tarafından görülebilmeli.
+
+---
+
+# 3. Öğrenci Kayıt ve Giriş Sistemi
+
+Öğrenciler Öğrenci Portalı üzerinden kayıt olabilir.
+
+Öğrenci kayıt formunda şu alanlar olacak:
+
+* Ad
+* Soyad
+* Okul numarası
+* E-posta
+* Şifre
+* Şifre tekrar
+
+Kurallar:
+
+* Okul numarası benzersiz olmalı.
+* E-posta benzersiz olmalı.
+* Şifreler güvenli şekilde hashlenmeli.
+* Şifre ve şifre tekrar aynı olmalı.
+* Kayıt olduktan sonra öğrenci hesabı oluşmalı.
+* Her öğrenci için otomatik bir **veli erişim kodu** oluşturulmalı.
+* Bu veli erişim kodu admin panelinden görüntülenebilmeli.
+* Gerekirse öğretmen de kendi yetkili olduğu öğrenciler için veli kodunu görebilmeli.
+* Veli kodu tahmin edilemez olmalı. Örneğin `V-8K4P2X` gibi kısa ama güvenli bir kod olabilir.
+
+Öğrenci giriş bilgileri:
+
+* Kullanıcı adı: okul numarası
+* Şifre: öğrencinin belirlediği şifre
+
+Şifre sıfırlama:
+
+* Öğrenci şifresini unutursa e-posta adresini girer.
+* Sistemde bu e-posta varsa şifre sıfırlama bağlantısı veya token oluşturulur.
+* Öğrenci yeni şifre belirleyebilir.
+* Token süreli olmalı.
+* Token kullanıldıktan sonra geçersiz olmalı.
+
+---
+
+# 4. Öğrenci Portalı
+
+Öğrenci giriş yaptıktan sonra öğrenci paneline yönlendirilecek.
+
+Öğrenci portalında şu bölümler olacak:
+
+## 4.1 Panel Ana Sayfası
+
+Öğrenci şunları görebilmeli:
+
+* Ad soyad
+* Okul numarası
+* Kayıtlı olduğu atölye
+* Toplam elmas puanı
+* Kazandığı rozetler
+* Aktif madalyası
+* Tamamlanan ödev sayısı
+* Bekleyen ödev sayısı
+* Devam durumu
+* Son duyurular
+
+## 4.2 Atölyem
+
+Öğrenci kayıtlı olduğu atölyeyi görebilmeli.
+
+Bu sayfada:
+
+* Atölye adı
+* Atölye açıklaması
+* 8 haftalık müfredat
+* Hangi haftada olunduğu
+* Öğretmen bilgileri
+* Haftalık görevler
+* İlerleme yüzdesi
+
+## 4.3 Ödevlerim
+
+Öğrenci kendisine atanmış ödevleri görebilmeli.
+
+Ödev kartında:
+
+* Ödev başlığı
+* Açıklama
+* Atölye adı
+* Son teslim tarihi
+* Durum: bekliyor / gönderildi / değerlendirildi / geç teslim
+* Kazanılacak elmas
+* Öğretmen geri bildirimi
+
+Öğrenci ödevi çözebilmek için:
+
+* Metin cevabı yazabilmeli.
+* Dosya veya görsel yükleyebilmeli. MVP için sadece metin cevabı yeterli olabilir ama dosya yükleme desteği için yapı hazır olsun.
+* Gönder butonuna basınca ödev teslim edilmiş sayılmalı.
+* Öğretmen değerlendirme yapana kadar durum “gönderildi” olmalı.
+
+## 4.4 Görevler ve Oyunlaştırma
+
+Öğrenciler görevleri tamamlayarak elmas kazanabilmeli.
+
+Elmas kazanma örnekleri:
+
+* Ödevi zamanında teslim etmek
+* Öğretmenden yüksek puan almak
+* Atölyeye düzenli katılmak
+* Haftalık görevi tamamlamak
+* Proje sunumu yapmak
+* Takım çalışmasına katkı sağlamak
+* Sosyal sorumluluk görevini tamamlamak
+
+Her elmas hareketi kayıt altında tutulmalı.
+
+Öğrenci elmas geçmişini görebilmeli:
+
+* Ne zaman kazandı?
+* Hangi görevden kazandı?
+* Kaç elmas kazandı?
+* Öğretmen mi verdi, sistem mi verdi?
+
+## 4.5 Ödül Mağazası
+
+Öğrenciler kazandıkları elmaslarla ödül satın alabilmeli.
+
+Ödül türleri:
+
+* Bronz madalya
+* Gümüş madalya
+* Altın madalya
+* Profil çerçevesi
+* Haftanın yıldızı etiketi
+* Doğa dostu öğrenci rozeti
+* Fidan katkı rozeti
+* Sosyal sorumluluk rozeti
+
+Ödül alanları:
+
+* Ödül adı
+* Açıklama
+* Gerekli elmas
+* Ödül türü
+* Süreli mi?
+* Kaç gün aktif kalacak?
+* Profilde gösterilsin mi?
+* Admin onayı gerekli mi?
+
+Örneğin:
+
+* Bronz Madalya: 100 elmas
+* Gümüş Madalya: 250 elmas
+* Altın Madalya: 500 elmas
+* Fidan Katkı Rozeti: 600 elmas
+
+Öğrenci ödül satın aldığında:
+
+* Yeterli elması varsa satın alma gerçekleşsin.
+* Elmas bakiyesi düşsün.
+* Ödül öğrenci profiline eklensin.
+* Eğer ödül admin onayı gerektiriyorsa “onay bekliyor” durumunda kalsın.
+* Süreli ödüllerde bitiş tarihi olsun. Örneğin altın madalya 7 gün görünsün.
+
+## 4.6 Rozetlerim
+
+Öğrenci kazandığı rozetleri ve madalyaları görebilmeli.
+
+Rozet durumları:
+
+* Kazanıldı
+* Aktif
+* Süresi doldu
+* Onay bekliyor
+
+## 4.7 Duyurular
+
+Öğrenci kendi atölyesine ait duyuruları ve genel duyuruları görebilmeli.
+
+---
+
+# 5. Veli Portalı
+
+Veliler ayrı hesap açmayacak.
+
+Veliler veli portalına şu bilgilerle giriş yapacak:
+
+* Öğrenci okul numarası
+* Veli erişim kodu
+
+Veli erişim kodu öğrenci kayıt olduktan sonra sistem tarafından otomatik oluşturulacak.
+
+Veli asla öğrenci şifresiyle giriş yapmayacak.
+
+Veli portalı sadece görüntüleme yetkisine sahip olacak. Veli hiçbir şekilde:
+
+* Ödev çözemez
+* Ödev gönderemez
+* Puan değiştiremez
+* Öğrenci bilgisi değiştiremez
+* Atölye kaydı yapamaz
+* Ödül satın alamaz
+
+Veli portalında şunlar olacak:
+
+## 5.1 Çocuğumun Genel Durumu
+
+Veli şunları görebilmeli:
+
+* Öğrencinin adı soyadı
+* Okul numarası
+* Kayıtlı olduğu atölye
+* Toplam elmas
+* Kazandığı rozetler
+* Aktif madalyalar
+* Devam durumu
+* Tamamlanan ödev sayısı
+* Bekleyen ödev sayısı
+* Genel ilerleme yüzdesi
+
+## 5.2 Atölye Bilgisi
+
+Veli, çocuğunun kayıtlı olduğu atölyeyi görebilmeli.
+
+Bu sayfada:
+
+* Atölye adı
+* Atölye açıklaması
+* 8 haftalık müfredat
+* Hangi hafta hangi konu işleniyor?
+* Öğrencinin ilerleme durumu
+* Atölye öğretmenleri
+
+## 5.3 Ödev Durumu
+
+Veli çocuğuna verilen ödevleri görebilmeli.
+
+Her ödev için:
+
+* Ödev adı
+* Son teslim tarihi
+* Durum
+* Öğretmen puanı
+* Öğretmen geri bildirimi
+* Kazanılan elmas
+
+## 5.4 Yoklama Durumu
+
+Veli çocuğunun atölye devam durumunu görebilmeli.
+
+Durumlar:
+
+* Geldi
+* Gelmedi
+* Geç geldi
+* Mazeretli
+
+## 5.5 Öğretmen Notları
+
+Öğretmen öğrenci hakkında kısa not ekleyebilirse veli bu notları okuyabilmeli.
+
+Örneğin:
+
+“Bu hafta takım çalışmasına aktif katıldı.”
+
+---
+
+# 6. Öğretmen Kayıt ve Giriş Sistemi
+
+Öğretmenler Öğretmen Portalı üzerinden giriş yapacak.
+
+Öğretmen kayıt formunda şu alanlar olacak:
+
+* Ad
+* Soyad
+* E-posta
+* Şifre
+* Şifre tekrar
+
+Ancak güvenlik için öğretmen hesabı kayıt olduktan sonra hemen aktif olmamalı.
+
+Öğretmen hesap akışı:
+
+* Öğretmen kayıt olur.
+* Hesap “onay bekliyor” durumunda oluşur.
+* Admin öğretmeni onaylar.
+* Admin öğretmene hangi atölyelerde yetkili olduğunu seçer.
+* Öğretmen sadece yetkili olduğu atölyelerde işlem yapabilir.
+
+Öğretmen giriş bilgileri:
+
+* E-posta
+* Şifre
+
+---
+
+# 7. Öğretmen Portalı
+
+Öğretmen giriş yaptıktan sonra sadece yetkili olduğu atölyeleri görebilmeli.
+
+Örneğin öğretmenin yetkileri:
+
+* Döner Kanat: yetkili
+* Sabit Kanat: yetkili
+* FPV Dron Pilotluğu: yetkisiz
+* Roket: yetkisiz
+
+Bu durumda öğretmen sadece Döner Kanat ve Sabit Kanat öğrencileriyle işlem yapabilmeli.
+
+## 7.1 Öğretmen Panel Ana Sayfası
+
+Öğretmen şunları görebilmeli:
+
+* Yetkili olduğu atölyeler
+* Toplam öğrenci sayısı
+* Bekleyen ödev değerlendirmeleri
+* Bu haftaki atölye programı
+* Son duyurular
+
+## 7.2 Öğrenci Atölye Kaydı
+
+Öğretmen öğrenci okul numarasını arayarak öğrenciyi yetkili olduğu atölyelerden birine kaydedebilmeli.
+
+Kurallar:
+
+* Öğretmen sadece yetkili olduğu atölyeye öğrenci kaydedebilir.
+* Öğrenci zaten bir atölyeye kayıtlıysa sistem uyarı vermeli.
+* Admin ayarına göre öğrenci tek atölyeye veya birden fazla atölyeye kayıt olabilir. Varsayılan olarak öğrenci sadece 1 atölyeye kayıtlı olsun.
+* Atölye kontenjanı doluysa kayıt yapılamasın.
+* Kontenjan doluysa öğrenci bekleme listesine alınabilsin.
+* Kayıt işlemi kayıt geçmişine yazılsın.
+
+## 7.3 Öğrenci Listesi
+
+Öğretmen sadece yetkili olduğu atölyelerdeki öğrencileri görebilmeli.
+
+Liste alanları:
+
+* Ad soyad
+* Okul numarası
+* Atölye
+* Devam durumu
+* Toplam elmas
+* Tamamlanan ödev sayısı
+* Son aktivite
+* Detay butonu
+
+## 7.4 Ödev Atama
+
+Öğretmen yetkili olduğu atölyeye ödev verebilmeli.
+
+Ödev alanları:
+
+* Başlık
+* Açıklama
+* Atölye
+* Hafta numarası
+* Son teslim tarihi
+* Kazandıracağı elmas
+* Maksimum puan
+* Dosya yükleme gerekli mi?
+* Aktif/pasif durumu
+
+Öğretmen ödevi tüm atölye öğrencilerine veya seçili öğrencilere atayabilmeli.
+
+## 7.5 Ödev Değerlendirme
+
+Öğretmen öğrencilerin gönderdiği ödevleri değerlendirebilmeli.
+
+Değerlendirme alanları:
+
+* Puan
+* Geri bildirim
+* Ekstra elmas
+* Durum: başarılı / tekrar yapmalı / eksik / geç teslim
+
+Öğretmen değerlendirme yapınca:
+
+* Öğrenciye puan kaydedilsin.
+* Kazanılan elmas öğrencinin hesabına eklensin.
+* Elmas hareketi geçmişe yazılsın.
+* Öğrenci ve veli panelinde sonuç görünsün.
+
+## 7.6 Yoklama Alma
+
+Öğretmen haftalık yoklama alabilmeli.
+
+Yoklama alanları:
+
+* Atölye
+* Hafta numarası
+* Tarih
+* Öğrenci
+* Durum: geldi / gelmedi / geç geldi / mazeretli
+* Not
+
+Yoklama veli portalında görünmeli.
+
+## 7.7 Puan ve Elmas Verme
+
+Öğretmen öğrenciye manuel elmas veya puan verebilmeli.
+
+Ancak sadece yetkili olduğu atölyelerdeki öğrenciler için bunu yapabilmeli.
+
+Manuel elmas verme alanları:
+
+* Öğrenci
+* Elmas miktarı
+* Açıklama
+* İlgili atölye
+
+Bu işlem kayıt altına alınmalı.
+
+## 7.8 Duyuru Yayınlama
+
+Öğretmen sadece yetkili olduğu atölyeler için duyuru yayınlayabilmeli.
+
+Duyuru alanları:
+
+* Başlık
+* İçerik
+* Atölye
+* Yayın durumu
+* Tarih
+
+---
+
+# 8. Admin Paneli
+
+Admin paneli `/admin` adresinden erişilecek.
+
+Ana sayfada Admin Portalı butonu görünmeyecek.
+
+Admin tüm yetkilere sahip olacak.
+
+Admin şunları yapabilmeli:
+
+## 8.1 Dashboard
+
+Admin panelinde genel özet:
+
+* Toplam öğrenci sayısı
+* Toplam öğretmen sayısı
+* Toplam atölye sayısı
+* Aktif kayıt sayısı
+* Bekleyen öğretmen onayları
+* Bekleyen ödül onayları
+* Toplam verilen ödev
+* Toplam teslim edilen ödev
+* En aktif atölyeler
+* Son sistem hareketleri
+
+## 8.2 Öğrenci Yönetimi
+
+Admin:
+
+* Öğrenci ekleyebilmeli
+* Öğrenci düzenleyebilmeli
+* Öğrenci silebilmeli veya pasife alabilmeli
+* Öğrencinin okul numarasını, adını, soyadını, e-postasını düzenleyebilmeli
+* Öğrencinin veli erişim kodunu görebilmeli
+* Gerekirse yeni veli kodu oluşturabilmeli
+* Öğrencinin şifresini sıfırlayabilmeli
+* Öğrencinin atölye kaydını değiştirebilmeli
+* Öğrencinin elmas puanını düzenleyebilmeli
+* Öğrencinin ödev durumunu admin panelinden düzeltebilmeli
+
+## 8.3 Öğretmen Yönetimi
+
+Admin:
+
+* Öğretmen ekleyebilmeli
+* Öğretmen düzenleyebilmeli
+* Öğretmen silebilmeli veya pasife alabilmeli
+* Bekleyen öğretmen kayıtlarını onaylayabilmeli
+* Öğretmene atölye yetkisi verebilmeli
+* Öğretmenden atölye yetkisi alabilmeli
+* Öğretmen şifresini sıfırlayabilmeli
+
+## 8.4 Atölye Yönetimi
+
+Admin 6 atölyeyi yönetebilmeli.
+
+Atölye alanları:
+
+* Atölye adı
+* Kısa açıklama
+* Detaylı açıklama
+* Kimler için uygun?
+* Kazanımlar
+* Kontenjan
+* Aktif/pasif durumu
+* Kapak görseli
+* Sıralama
+
+Varsayılan olarak şu 6 atölye seed verisi olarak oluşturulsun:
+
+* Döner Kanat
+* Sabit Kanat
+* FPV Dron Pilotluğu
+* Proje Yönetmeliği
+* Yapay Zeka
+* Roket
+
+## 8.5 Müfredat Yönetimi
+
+Her atölye 8 haftalık müfredata sahip olacak.
+
+Admin her atölye için 8 haftalık müfredatı düzenleyebilmeli.
+
+Müfredat alanları:
+
+* Atölye
+* Hafta numarası
+* Hafta başlığı
+* Konu açıklaması
+* Kazanımlar
+* Etkinlik
+* Ödev önerisi
+
+## 8.6 Atölye Kayıtları
+
+Admin:
+
+* Tüm öğrencilerin hangi atölyeye kayıtlı olduğunu görebilmeli
+* Yeni kayıt yapabilmeli
+* Kayıt silebilmeli
+* Kayıt değiştirebilmeli
+* Bekleme listesini görebilmeli
+* Kontenjanı aşan kayıtları engelleyebilmeli
+
+## 8.7 Ödev Yönetimi
+
+Admin tüm ödevleri görebilmeli.
+
+Admin:
+
+* Ödev oluşturabilmeli
+* Ödev düzenleyebilmeli
+* Ödev silebilmeli
+* Öğrencilerin ödev durumlarını düzenleyebilmeli
+* Öğretmen değerlendirmelerini görebilmeli
+* Gerekirse düzeltme yapabilmeli
+
+## 8.8 Yoklama Yönetimi
+
+Admin tüm yoklamaları görebilmeli.
+
+Admin:
+
+* Yoklama kayıtlarını görüntüleyebilmeli
+* Düzenleyebilmeli
+* Eksik yoklama kayıtlarını tamamlayabilmeli
+
+## 8.9 Oyunlaştırma Yönetimi
+
+Admin:
+
+* Elmas kurallarını yönetebilmeli
+* Rozetleri yönetebilmeli
+* Ödül mağazasını yönetebilmeli
+* Öğrenci ödül satın alma kayıtlarını görebilmeli
+* Admin onayı gerektiren ödülleri onaylayabilmeli veya reddedebilmeli
+* Öğrenci elmas geçmişini görebilmeli
+* Hatalı puanları düzeltebilmeli
+
+## 8.10 Duyuru Yönetimi
+
+Admin genel duyuru veya atölyeye özel duyuru oluşturabilmeli.
+
+Duyuru alanları:
+
+* Başlık
+* İçerik
+* Hedef kitle: herkes / öğrenciler / veliler / öğretmenler / belirli atölye
+* Yayın durumu
+* Yayın tarihi
+
+## 8.11 Raporlama
+
+Admin panelinde basit raporlar olsun:
+
+* Atölye bazlı öğrenci sayısı
+* Kontenjan doluluk oranı
+* Ödev tamamlama oranı
+* Öğrenci ilerleme oranı
+* Yoklama devam oranı
+* En çok elmas kazanan öğrenciler
+* Rozet kazanan öğrenciler
+* Bekleyen değerlendirmeler
+
+MVP için grafik şart değil ama tablo halinde gösterilsin. Daha sonra grafik eklenebilecek şekilde yapı kurulsun.
+
+## 8.12 Sistem Kayıtları
+
+Önemli işlemler audit log olarak kaydedilsin.
+
+Kayıt altına alınacak örnek işlemler:
+
+* Öğrenci oluşturuldu
+* Öğrenci silindi
+* Öğretmen onaylandı
+* Öğretmene atölye yetkisi verildi
+* Öğrenci atölyeye kaydedildi
+* Ödev değerlendirildi
+* Manuel elmas verildi
+* Veli kodu yenilendi
+* Ödül onaylandı
+
+---
+
+# 9. Veritabanı Modeli
+
+Aşağıdaki mantığa uygun veritabanı modeli oluştur.
+
+Gerekirse isimleri daha iyi hale getirebilirsin ama ilişkiler korunmalı.
+
+## User / Kullanıcı
+
+Ortak kullanıcı yapısı olabilir.
+
+Alanlar:
+
+* id
+* role: admin / teacher / student
+* firstName
+* lastName
+* email
+* passwordHash
+* schoolNumber
+* isActive
+* isApproved
+* createdAt
+* updatedAt
+
+Öğrencilerde schoolNumber zorunlu ve benzersiz olmalı.
+
+Öğretmenlerde email zorunlu ve benzersiz olmalı.
+
+Admin için seed kullanıcı oluştur.
+
+## ParentAccessCode / Veli Erişim Kodu
+
+Alanlar:
+
+* id
+* studentId
+* code
+* isActive
+* createdAt
+* updatedAt
+* lastUsedAt
+
+Her öğrenci için aktif bir veli kodu olmalı.
+
+Veli girişinde okul numarası + veli kodu kullanılmalı.
+
+## Workshop / Atölye
+
+Alanlar:
+
+* id
+* name
+* slug
+* shortDescription
+* description
+* suitableFor
+* outcomes
+* capacity
+* coverImage
+* isActive
+* sortOrder
+* createdAt
+* updatedAt
+
+## WorkshopCurriculum / Atölye Müfredatı
+
+Alanlar:
+
+* id
+* workshopId
+* weekNumber
+* title
+* description
+* outcomes
+* activity
+* homeworkSuggestion
+
+Her atölye için 1-8 arası haftalar olsun.
+
+## TeacherWorkshopPermission / Öğretmen Atölye Yetkisi
+
+Alanlar:
+
+* id
+* teacherId
+* workshopId
+* canManageStudents
+* canCreateAssignments
+* canGradeAssignments
+* canTakeAttendance
+* canCreateAnnouncements
+
+Varsayılan olarak öğretmene yetki verilmez. Admin yetki verir.
+
+## Enrollment / Atölye Kaydı
+
+Alanlar:
+
+* id
+* studentId
+* workshopId
+* status: active / completed / cancelled / waitlist
+* enrolledByTeacherId
+* createdAt
+* updatedAt
+
+Varsayılan olarak öğrenci sadece bir aktif atölyeye kayıtlı olsun.
+
+## Assignment / Ödev
+
+Alanlar:
+
+* id
+* workshopId
+* teacherId
+* title
+* description
+* weekNumber
+* dueDate
+* diamondReward
+* maxScore
+* isActive
+* createdAt
+* updatedAt
+
+## AssignmentSubmission / Ödev Teslimi
+
+Alanlar:
+
+* id
+* assignmentId
+* studentId
+* answerText
+* fileUrl
+* status: pending / submitted / graded / needs_revision / late
+* score
+* feedback
+* gradedByTeacherId
+* submittedAt
+* gradedAt
+* createdAt
+* updatedAt
+
+## Attendance / Yoklama
+
+Alanlar:
+
+* id
+* workshopId
+* studentId
+* teacherId
+* weekNumber
+* date
+* status: present / absent / late / excused
+* note
+* createdAt
+* updatedAt
+
+## DiamondTransaction / Elmas Hareketleri
+
+Alanlar:
+
+* id
+* studentId
+* amount
+* type: earn / spend / adjustment
+* reason
+* relatedAssignmentId
+* relatedRewardId
+* createdByUserId
+* createdAt
+
+Öğrencinin toplam elması bu transactionlardan hesaplanabilir veya ayrıca balance alanı tutulabilir. Tutarlılık için güvenli bir yöntem kullan.
+
+## Reward / Ödül
+
+Alanlar:
+
+* id
+* name
+* description
+* cost
+* type: badge / medal / frame / social_good
+* durationDays
+* requiresAdminApproval
+* isActive
+* createdAt
+* updatedAt
+
+## StudentReward / Öğrenci Ödülü
+
+Alanlar:
+
+* id
+* studentId
+* rewardId
+* status: active / pending / rejected / expired
+* purchasedAt
+* approvedAt
+* expiresAt
+
+## Announcement / Duyuru
+
+Alanlar:
+
+* id
+* title
+* content
+* targetType: all / students / parents / teachers / workshop
+* workshopId
+* createdByUserId
+* isPublished
+* publishedAt
+* createdAt
+* updatedAt
+
+## AuditLog / Sistem Hareketi
+
+Alanlar:
+
+* id
+* userId
+* action
+* entityType
+* entityId
+* description
+* createdAt
+
+---
+
+# 10. Yetkilendirme Kuralları
+
+Sistemde yetkilendirme çok önemli.
+
+## Öğrenci
+
+Öğrenci sadece:
+
+* Kendi bilgilerini görebilir
+* Kendi atölyesini görebilir
+* Kendi ödevlerini görebilir
+* Kendi ödevlerini gönderebilir
+* Kendi elmaslarını görebilir
+* Kendi ödüllerini görebilir
+* Ödül mağazasından alışveriş yapabilir
+* Kendi duyurularını görebilir
+
+Öğrenci şunları yapamaz:
+
+* Başka öğrencileri göremez
+* Başka öğrencilerin ödevlerini göremez
+* Puan değiştiremez
+* Atölye kaydı yapamaz
+* Öğretmen alanlarına giremez
+* Admin alanlarına giremez
+
+## Veli
+
+Veli ayrı kullanıcı değildir.
+
+Veli okul numarası + veli kodu ile sadece görüntüleme yapar.
+
+Veli sadece kendi çocuğunun:
+
+* Atölyesini
+* Müfredatını
+* Ödev durumunu
+* Yoklamasını
+* Rozetlerini
+* Öğretmen notlarını
+* Genel ilerlemesini
+
+görebilir.
+
+Veli hiçbir veri değiştiremez.
+
+## Öğretmen
+
+Öğretmen sadece yetkili olduğu atölyelerde işlem yapabilir.
+
+Öğretmen:
+
+* Yetkili olduğu atölyelerin öğrencilerini görebilir
+* Yetkili olduğu atölyeye öğrenci kaydedebilir
+* Yetkili olduğu atölyeye ödev verebilir
+* Yetkili olduğu atölyedeki öğrencilerin ödevlerini değerlendirebilir
+* Yetkili olduğu atölyede yoklama alabilir
+* Yetkili olduğu atölyedeki öğrencilere elmas verebilir
+* Yetkili olduğu atölyeye duyuru yayınlayabilir
+
+Öğretmen şunları yapamaz:
+
+* Yetkili olmadığı atölyeyi yönetemez
+* Admin paneline giremez
+* Tüm sistemi değiştiremez
+* Başka atölyedeki öğrencileri düzenleyemez
+
+## Admin
+
+Admin her şeyi yapabilir.
+
+---
+
+# 11. Arayüz Tasarımı
+
+Tasarım modern, sade, mobil uyumlu ve ortaokul öğrencilerine uygun olmalı.
+
+Genel tasarım ilkeleri:
+
+* Mobil öncelikli responsive tasarım
+* Büyük ve okunabilir butonlar
+* Kart tabanlı yapı
+* Renkli ama aşırı karmaşık olmayan görünüm
+* Öğrenci tarafı eğlenceli ve motive edici olsun
+* Admin tarafı sade ve yönetim odaklı olsun
+* Öğretmen paneli pratik ve hızlı kullanılabilir olsun
+* Veli paneli çok sade ve anlaşılır olsun
+
+Sayfalarda gereksiz karmaşa olmasın.
+
+Öğrenciler için:
+
+* Elmas göstergesi
+* Rozet alanı
+* İlerleme çubuğu
+* Ödev kartları
+* Atölye ilerleme yüzdesi
+
+Veli için:
+
+* Basit durum kartları
+* Ödev durumu
+* Yoklama durumu
+* Müfredat listesi
+
+Öğretmen için:
+
+* Tablo ve filtreler
+* Öğrenci arama
+* Atölye seçimi
+* Değerlendirme formları
+
+Admin için:
+
+* Yönetim tabloları
+* Arama ve filtreleme
+* Detay sayfaları
+* Yetki atama ekranı
+
+---
+
+# 12. Sayfa Yapısı
+
+Aşağıdaki sayfaları oluştur:
+
+## Public
+
+* `/`
+* `/workshops`
+* `/workshops/[slug]`
+
+## Student
+
+* `/student/login`
+* `/student/register`
+* `/student/forgot-password`
+* `/student/reset-password`
+* `/student/dashboard`
+* `/student/workshop`
+* `/student/assignments`
+* `/student/assignments/[id]`
+* `/student/rewards`
+* `/student/badges`
+* `/student/announcements`
+
+## Parent
+
+* `/parent/login`
+* `/parent/dashboard`
+* `/parent/workshop`
+* `/parent/assignments`
+* `/parent/attendance`
+* `/parent/rewards`
+
+## Teacher
+
+* `/teacher/login`
+* `/teacher/register`
+* `/teacher/dashboard`
+* `/teacher/students`
+* `/teacher/enrollments`
+* `/teacher/assignments`
+* `/teacher/assignments/new`
+* `/teacher/submissions`
+* `/teacher/attendance`
+* `/teacher/announcements`
+
+## Admin
+
+* `/admin/login`
+* `/admin/dashboard`
+* `/admin/students`
+* `/admin/teachers`
+* `/admin/workshops`
+* `/admin/curriculum`
+* `/admin/enrollments`
+* `/admin/assignments`
+* `/admin/attendance`
+* `/admin/rewards`
+* `/admin/announcements`
+* `/admin/reports`
+* `/admin/audit-logs`
+
+---
+
+# 13. Seed Verileri
+
+Proje ilk çalıştığında örnek veriler oluşsun.
+
+Seed içinde:
+
+## Admin
+
+* E-posta: `admin@atolye.local`
+* Şifre: `Admin123!`
+
+## Atölyeler
+
+6 atölye otomatik oluşsun:
+
+1. Döner Kanat
+2. Sabit Kanat
+3. FPV Dron Pilotluğu
+4. Proje Yönetmeliği
+5. Yapay Zeka
+6. Roket
+
+Her atölyeye örnek açıklama ve 8 haftalık örnek müfredat ekle.
+
+## Örnek Ödüller
+
+* Bronz Madalya - 100 elmas
+* Gümüş Madalya - 250 elmas
+* Altın Madalya - 500 elmas
+* Profil Çerçevesi - 300 elmas
+* Fidan Katkı Rozeti - 600 elmas
+* Doğa Dostu Öğrenci Rozeti - 700 elmas
+
+## Örnek Öğrenci
+
+* Ad: Ali
+* Soyad: Yılmaz
+* Okul numarası: 1001
+* E-posta: [ali@example.com](mailto:ali@example.com)
+* Şifre: Ogrenci123!
+
+## Örnek Öğretmen
+
+* Ad: Ayşe
+* Soyad: Demir
+* E-posta: [ayse@example.com](mailto:ayse@example.com)
+* Şifre: Ogretmen123!
+* Yetkili olduğu atölyeler: Yapay Zeka, Roket
+
+---
+
+# 14. Güvenlik Gereksinimleri
+
+Şunlara dikkat et:
+
+* Parolalar düz metin tutulmasın.
+* Güvenli hashleme kullan.
+* Admin, öğretmen ve öğrenci route’ları korunmalı.
+* Öğretmen yetki kontrolleri sadece frontend’de değil backend’de de yapılmalı.
+* Veli kodu tahmin edilemez olmalı.
+* Veli sadece okuma yapabilmeli.
+* Input validation yapılmalı.
+* CSRF veya frameworkün sağladığı güvenlik önlemleri kullanılmalı.
+* Dosya yükleme varsa dosya türü ve boyutu sınırlandırılmalı.
+* Hatalar kullanıcıya açık şekilde teknik detay vermemeli.
+* Audit log önemli işlemleri kaydetmeli.
+
+---
+
+# 15. MVP Önceliği
+
+Projeyi önce çalışır MVP olarak kur.
+
+İlk sürümde kesin olsun:
+
+* Public ana sayfa
+* Atölye tanıtım sayfaları
+* Öğrenci kayıt/giriş
+* Öğretmen kayıt/giriş
+* Veli kodu ile veli girişi
+* Admin girişi
+* Admin öğrenci yönetimi
+* Admin öğretmen yönetimi
+* Admin atölye yönetimi
+* Öğretmene atölye yetkisi verme
+* Öğretmenin öğrenciyi yetkili olduğu atölyeye kaydetmesi
+* Kontenjan kontrolü
+* Öğretmenin ödev ataması
+* Öğrencinin ödev görüp cevap göndermesi
+* Öğretmenin ödev değerlendirmesi
+* Elmas kazanma sistemi
+* Basit ödül mağazası
+* Veli panelinde öğrencinin durumunu görme
+* Mobil uyumlu tasarım
+
+İkinci aşamaya bırakılabilecekler:
+
+* Gelişmiş grafik raporlar
+* Gerçek fidan bağışı entegrasyonu
+* E-posta gönderim servis entegrasyonu
+* Gelişmiş dosya yükleme
+* Bildirim sistemi
+* Yapay zeka destekli atölye öneri testi
+
+Ama kod yapısını bu özellikler ileride kolay eklenebilecek şekilde kur.
+
+---
+
+# 16. Kabul Kriterleri
+
+Proje bittiğinde şu senaryolar çalışmalı:
+
+## Senaryo 1: Öğrenci kayıt olur
+
+* Öğrenci ad, soyad, okul numarası, e-posta ve şifre ile kayıt olur.
+* Sisteme giriş yapar.
+* Öğrenci panelini görür.
+* Öğrenci için otomatik veli erişim kodu oluşur.
+
+## Senaryo 2: Veli giriş yapar
+
+* Veli, öğrencinin okul numarası ve veli erişim kodu ile giriş yapar.
+* Sadece kendi çocuğunun bilgilerini görür.
+* Hiçbir veri değiştiremez.
+
+## Senaryo 3: Öğretmen kayıt olur
+
+* Öğretmen kayıt olur.
+* Admin onaylamadan giriş yapamaz veya işlem yapamaz.
+* Admin öğretmeni onaylar.
+* Admin öğretmene belirli atölyelerde yetki verir.
+
+## Senaryo 4: Öğretmen öğrenci kaydeder
+
+* Öğretmen kendi yetkili olduğu atölyeleri görür.
+* Öğrenciyi sadece yetkili olduğu atölyeye kaydeder.
+* Yetkisi olmayan atölyeye kayıt yapamaz.
+* Kontenjan doluysa kayıt engellenir veya bekleme listesine alınır.
+
+## Senaryo 5: Öğretmen ödev verir
+
+* Öğretmen yetkili olduğu atölyeye ödev oluşturur.
+* Öğrenciler bu ödevi kendi panelinde görür.
+* Öğrenci ödevi gönderir.
+* Öğretmen değerlendirir.
+* Öğrenci elmas kazanır.
+* Veli bu durumu görür.
+
+## Senaryo 6: Öğrenci ödül alır
+
+* Öğrenci yeterli elması varsa mağazadan ödül alır.
+* Elmas bakiyesi düşer.
+* Ödül öğrenci profilinde görünür.
+* Süreli ödüllerin süresi dolunca pasifleşir.
+
+## Senaryo 7: Admin her şeyi yönetir
+
+* Admin tüm öğrenci, öğretmen, atölye, ödev, yoklama, ödül ve duyuruları yönetebilir.
+* Öğretmen yetkilendirmesi yapabilir.
+* Veli kodunu yenileyebilir.
+* Hatalı puanları düzeltebilir.
+
+---
+
+# 17. Kodlama Talimatları
+
+Kod yazarken:
+
+* Önce proje yapısını kur.
+* Veritabanı modellerini oluştur.
+* Migration ve seed dosyalarını oluştur.
+* Auth sistemini kur.
+* Role-based access control yap.
+* Public sayfaları oluştur.
+* Öğrenci portalını oluştur.
+* Öğretmen portalını oluştur.
+* Veli portalını oluştur.
+* Admin panelini oluştur.
+* Oyunlaştırma sistemini ekle.
+* README yaz.
+* Test edilebilir örnek kullanıcılar oluştur.
+
+Kodda gereksiz karmaşıklık yapma ama proje büyüyebilir şekilde temiz bir mimari kur.
+
+Bileşenleri tekrar kullanılabilir yap:
+
+* Button
+* Card
+* Input
+* Table
+* Badge
+* ProgressBar
+* DashboardStatCard
+* EmptyState
+* Layout
+* Sidebar
+* MobileNavbar
+
+Her portalın ayrı layout’u olsun:
+
+* PublicLayout
+* StudentLayout
+* TeacherLayout
+* ParentLayout
+* AdminLayout
+
+---
+
+# 18. Son Çıktı
+
+Bana çalışan bir proje ver.
+
+Sonunda README içinde şunlar yazsın:
+
+* Proje açıklaması
+* Kullanılan teknolojiler
+* Kurulum adımları
+* Veritabanı migration/seed komutları
+* Örnek kullanıcı bilgileri
+* Portal adresleri
+* Admin giriş bilgileri
+* Proje klasör yapısı
+* Önemli özellikler
+* Geliştirme önerileri
+
+Projeyi çalıştırınca ana sayfa açılsın, atölyeler görünsün, öğrenci/öğretmen/veli portallarına giriş yapılabilsin ve admin panelinden tüm sistem yönetilebilsin.

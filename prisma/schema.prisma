@@ -1,0 +1,349 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  admin
+  teacher
+  student
+}
+
+enum EnrollmentStatus {
+  active
+  completed
+  cancelled
+  waitlist
+}
+
+enum SubmissionStatus {
+  pending
+  submitted
+  graded
+  needs_revision
+  late
+}
+
+enum AttendanceStatus {
+  present
+  absent
+  late
+  excused
+}
+
+enum DiamondTransactionType {
+  earn
+  spend
+  adjustment
+}
+
+enum RewardType {
+  badge
+  medal
+  frame
+  social_good
+}
+
+enum StudentRewardStatus {
+  active
+  pending
+  rejected
+  expired
+}
+
+enum AnnouncementTargetType {
+  all
+  students
+  parents
+  teachers
+  workshop
+}
+
+model User {
+  id                String   @id @default(cuid())
+  role              Role
+  firstName         String
+  lastName          String
+  email             String   @unique
+  passwordHash      String
+  schoolNumber      String?  @unique
+  gradeLevel        String?
+  branch            String?
+  diamondBalance    Int      @default(0)
+  isActive          Boolean  @default(true)
+  isApproved        Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  parentAccessCodes          ParentAccessCode[]        @relation("StudentParentCodes")
+  teacherPermissions         TeacherWorkshopPermission[] @relation("TeacherPermissions")
+  studentEnrollments         Enrollment[]              @relation("StudentEnrollments")
+  enrollmentsMade            Enrollment[]              @relation("EnrollmentCreatedBy")
+  assignmentsCreated         Assignment[]              @relation("AssignmentsCreated")
+  studentSubmissions         AssignmentSubmission[]     @relation("SubmissionStudent")
+  gradedSubmissions          AssignmentSubmission[]     @relation("SubmissionGrader")
+  attendances                Attendance[]              @relation("AttendanceStudent")
+  takenAttendances           Attendance[]              @relation("AttendanceTeacher")
+  studentDiamondTransactions DiamondTransaction[]       @relation("DiamondStudent")
+  createdDiamondTransactions DiamondTransaction[]       @relation("DiamondCreator")
+  studentRewards             StudentReward[]           @relation("StudentRewards")
+  announcements              Announcement[]            @relation("AnnouncementCreator")
+  auditLogs                  AuditLog[]                 @relation("AuditUser")
+  passwordResetTokens        PasswordResetToken[]
+  teacherNotesForStudent     TeacherNote[]             @relation("TeacherNoteStudent")
+  teacherNotesAuthored       TeacherNote[]             @relation("TeacherNoteTeacher")
+}
+
+model ParentAccessCode {
+  id         String    @id @default(cuid())
+  studentId  String    @unique
+  code       String    @unique
+  isActive   Boolean   @default(true)
+  lastUsedAt DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  student User @relation("StudentParentCodes", fields: [studentId], references: [id], onDelete: Cascade)
+}
+
+model Workshop {
+  id               String   @id @default(cuid())
+  name             String   @unique
+  slug             String   @unique
+  shortDescription String
+  description      String
+  suitableFor      String
+  outcomes         String
+  capacity         Int      @default(24)
+  coverImage       String?
+  isActive         Boolean  @default(true)
+  sortOrder        Int      @default(0)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  curriculum    WorkshopCurriculum[]
+  permissions   TeacherWorkshopPermission[]
+  enrollments   Enrollment[]
+  assignments   Assignment[]
+  attendances   Attendance[]
+  announcements Announcement[]
+  teacherNotes  TeacherNote[]
+}
+
+model WorkshopCurriculum {
+  id                 String @id @default(cuid())
+  workshopId         String
+  weekNumber         Int
+  title              String
+  description        String
+  outcomes           String
+  activity           String
+  homeworkSuggestion String
+
+  workshop Workshop @relation(fields: [workshopId], references: [id], onDelete: Cascade)
+
+  @@unique([workshopId, weekNumber])
+}
+
+model TeacherWorkshopPermission {
+  id                     String  @id @default(cuid())
+  teacherId              String
+  workshopId             String
+  canManageStudents      Boolean @default(true)
+  canCreateAssignments   Boolean @default(true)
+  canGradeAssignments    Boolean @default(true)
+  canTakeAttendance      Boolean @default(true)
+  canCreateAnnouncements Boolean @default(true)
+
+  teacher  User     @relation("TeacherPermissions", fields: [teacherId], references: [id], onDelete: Cascade)
+  workshop Workshop @relation(fields: [workshopId], references: [id], onDelete: Cascade)
+
+  @@unique([teacherId, workshopId])
+}
+
+model Enrollment {
+  id                  String           @id @default(cuid())
+  studentId           String
+  workshopId          String
+  status              EnrollmentStatus @default(active)
+  enrolledByTeacherId String?
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
+
+  student           User      @relation("StudentEnrollments", fields: [studentId], references: [id], onDelete: Cascade)
+  workshop          Workshop  @relation(fields: [workshopId], references: [id], onDelete: Cascade)
+  enrolledByTeacher User?     @relation("EnrollmentCreatedBy", fields: [enrolledByTeacherId], references: [id], onDelete: SetNull)
+
+  @@unique([studentId, workshopId])
+}
+
+model Assignment {
+  id            String   @id @default(cuid())
+  workshopId    String
+  teacherId     String?
+  title         String
+  description   String
+  weekNumber    Int
+  dueDate       DateTime
+  diamondReward Int      @default(20)
+  maxScore      Int      @default(100)
+  requiresFile  Boolean  @default(false)
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  workshop            Workshop               @relation(fields: [workshopId], references: [id], onDelete: Cascade)
+  teacher             User?                  @relation("AssignmentsCreated", fields: [teacherId], references: [id], onDelete: SetNull)
+  submissions         AssignmentSubmission[]
+  diamondTransactions DiamondTransaction[]
+}
+
+model AssignmentSubmission {
+  id                String           @id @default(cuid())
+  assignmentId      String
+  studentId         String
+  answerText        String?
+  fileUrl           String?
+  status            SubmissionStatus @default(pending)
+  score             Int?
+  feedback          String?
+  gradedByTeacherId String?
+  submittedAt       DateTime?
+  gradedAt          DateTime?
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+
+  assignment      Assignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  student         User       @relation("SubmissionStudent", fields: [studentId], references: [id], onDelete: Cascade)
+  gradedByTeacher User?      @relation("SubmissionGrader", fields: [gradedByTeacherId], references: [id], onDelete: SetNull)
+
+  @@unique([assignmentId, studentId])
+}
+
+model Attendance {
+  id         String           @id @default(cuid())
+  workshopId String
+  studentId  String
+  teacherId  String?
+  weekNumber Int
+  date       DateTime
+  status     AttendanceStatus
+  note       String?
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
+
+  workshop Workshop @relation(fields: [workshopId], references: [id], onDelete: Cascade)
+  student  User     @relation("AttendanceStudent", fields: [studentId], references: [id], onDelete: Cascade)
+  teacher  User?    @relation("AttendanceTeacher", fields: [teacherId], references: [id], onDelete: SetNull)
+
+  @@unique([workshopId, studentId, weekNumber])
+}
+
+model DiamondTransaction {
+  id                  String                 @id @default(cuid())
+  studentId           String
+  amount              Int
+  type                DiamondTransactionType
+  reason              String
+  relatedAssignmentId String?
+  relatedRewardId     String?
+  createdByUserId     String?
+  createdAt           DateTime               @default(now())
+
+  student           User        @relation("DiamondStudent", fields: [studentId], references: [id], onDelete: Cascade)
+  relatedAssignment Assignment? @relation(fields: [relatedAssignmentId], references: [id], onDelete: SetNull)
+  relatedReward     Reward?     @relation(fields: [relatedRewardId], references: [id], onDelete: SetNull)
+  createdByUser     User?       @relation("DiamondCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+}
+
+model Reward {
+  id                    String     @id @default(cuid())
+  name                  String
+  description           String
+  cost                  Int
+  type                  RewardType
+  durationDays          Int?
+  requiresAdminApproval Boolean    @default(false)
+  isActive              Boolean    @default(true)
+  createdAt             DateTime   @default(now())
+  updatedAt             DateTime   @updatedAt
+
+  studentRewards       StudentReward[]
+  diamondTransactions  DiamondTransaction[]
+}
+
+model StudentReward {
+  id          String              @id @default(cuid())
+  studentId   String
+  rewardId    String
+  status      StudentRewardStatus @default(active)
+  purchasedAt DateTime            @default(now())
+  approvedAt  DateTime?
+  expiresAt   DateTime?
+
+  student User   @relation("StudentRewards", fields: [studentId], references: [id], onDelete: Cascade)
+  reward  Reward @relation(fields: [rewardId], references: [id], onDelete: Cascade)
+}
+
+model Announcement {
+  id              String                 @id @default(cuid())
+  title           String
+  content         String
+  targetType      AnnouncementTargetType
+  workshopId      String?
+  createdByUserId String?
+  isPublished     Boolean                @default(true)
+  publishedAt     DateTime?
+  createdAt       DateTime               @default(now())
+  updatedAt       DateTime               @updatedAt
+
+  workshop      Workshop? @relation(fields: [workshopId], references: [id], onDelete: Cascade)
+  createdByUser User?     @relation("AnnouncementCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+}
+
+model TeacherNote {
+  id         String   @id @default(cuid())
+  studentId  String
+  teacherId  String?
+  workshopId String?
+  note       String
+  createdAt  DateTime @default(now())
+
+  student  User      @relation("TeacherNoteStudent", fields: [studentId], references: [id], onDelete: Cascade)
+  teacher  User?     @relation("TeacherNoteTeacher", fields: [teacherId], references: [id], onDelete: SetNull)
+  workshop Workshop? @relation(fields: [workshopId], references: [id], onDelete: SetNull)
+}
+
+model PasswordResetToken {
+  id        String    @id @default(cuid())
+  userId    String
+  tokenHash String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  userId      String?
+  action      String
+  entityType  String
+  entityId    String?
+  description String
+  createdAt   DateTime @default(now())
+
+  user User? @relation("AuditUser", fields: [userId], references: [id], onDelete: SetNull)
+}
+
+model AppSetting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  updatedAt DateTime @updatedAt
+}

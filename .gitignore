@@ -1,0 +1,11 @@
+node_modules
+.next
+.vercel
+.env
+*.db
+*.db-journal
+*.log
+*.tsbuildinfo
+dev-server.log
+dev-server.out.log
+dev-server.err.log
