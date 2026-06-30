@@ -1,6 +1,6 @@
+import { ParentLoginForm } from "@/components/login-forms";
 import { PublicLayout } from "@/components/layouts";
-import { Button, Card, Input } from "@/components/ui";
-import { loginParentAction } from "@/lib/actions";
+import { Card } from "@/components/ui";
 
 export default function ParentLoginPage() {
   return (
@@ -9,11 +9,7 @@ export default function ParentLoginPage() {
         <Card className="w-full">
           <h1 className="text-2xl font-black text-ink">Veli Girişi</h1>
           <p className="mb-6 mt-2 text-sm text-slate-600">Öğrenci şifresi gerekmez. Okul numarası ve veli kodu yeterlidir.</p>
-          <form action={loginParentAction} className="grid gap-4">
-            <Input label="Öğrenci okul numarası" name="schoolNumber" required />
-            <Input label="Veli erişim kodu" name="parentCode" placeholder="V-8K4P2X" required />
-            <Button>Görüntüle</Button>
-          </form>
+          <ParentLoginForm />
         </Card>
       </section>
     </PublicLayout>

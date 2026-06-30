@@ -44,6 +44,10 @@ function dueDateFrom(value: string) {
   return new Date(`${value}T23:59:00`);
 }
 
+type LoginActionState = {
+  error: string;
+};
+
 function enrollmentStatusFrom(value: string): EnrollmentStatus {
   const statuses: EnrollmentStatus[] = ["active", "completed", "cancelled", "waitlist"];
   return statuses.includes(value as EnrollmentStatus) ? (value as EnrollmentStatus) : "active";
@@ -174,16 +178,19 @@ export async function registerStudentAction(formData: FormData) {
   redirect("/student/dashboard");
 }
 
-export async function loginStudentAction(formData: FormData) {
-  const schoolNumber = required(text(formData, "schoolNumber"), "Okul numarası gerekli.");
-  const password = required(text(formData, "password"), "Şifre gerekli.");
+export async function loginStudentAction(_state: LoginActionState, formData: FormData): Promise<LoginActionState> {
+  const schoolNumber = text(formData, "schoolNumber");
+  const password = text(formData, "password");
+  if (!schoolNumber || !password) {
+    return { error: "Okul numarası ve şifre gerekli." };
+  }
 
   const user = await prisma.user.findFirst({
     where: { schoolNumber, role: "student", isActive: true, isApproved: true }
   });
 
   if (!user || !(await verifyPassword(password, user.passwordHash))) {
-    throw new Error("Okul numarası veya şifre hatalı.");
+    return { error: "Okul numarası veya şifre hatalı." };
   }
 
   await createUserSession(user.id, user.role);
@@ -257,41 +264,50 @@ export async function registerTeacherAction(formData: FormData) {
   redirect("/teacher/login?pending=1");
 }
 
-export async function loginTeacherAction(formData: FormData) {
-  const email = required(text(formData, "email"), "E-posta gerekli.").toLocaleLowerCase("tr-TR");
-  const password = required(text(formData, "password"), "Şifre gerekli.");
+export async function loginTeacherAction(_state: LoginActionState, formData: FormData): Promise<LoginActionState> {
+  const email = text(formData, "email").toLocaleLowerCase("tr-TR");
+  const password = text(formData, "password");
+  if (!email || !password) {
+    return { error: "E-posta ve şifre gerekli." };
+  }
 
   const user = await prisma.user.findFirst({ where: { email, role: "teacher", isActive: true } });
   if (!user || !(await verifyPassword(password, user.passwordHash))) {
-    throw new Error("E-posta veya şifre hatalı.");
+    return { error: "E-posta veya şifre hatalı." };
   }
   if (!user.isApproved) {
-    throw new Error("Öğretmen hesabınız admin onayı bekliyor.");
+    return { error: "Öğretmen hesabınız admin onayı bekliyor." };
   }
 
   await createUserSession(user.id, user.role);
   redirect("/teacher/dashboard");
 }
 
-export async function loginAdminAction(formData: FormData) {
-  const email = required(text(formData, "email"), "E-posta gerekli.").toLocaleLowerCase("tr-TR");
-  const password = required(text(formData, "password"), "Şifre gerekli.");
+export async function loginAdminAction(_state: LoginActionState, formData: FormData): Promise<LoginActionState> {
+  const email = text(formData, "email").toLocaleLowerCase("tr-TR");
+  const password = text(formData, "password");
+  if (!email || !password) {
+    return { error: "E-posta ve şifre gerekli." };
+  }
 
   const user = await prisma.user.findFirst({
     where: { email, role: "admin", isActive: true, isApproved: true }
   });
 
   if (!user || !(await verifyPassword(password, user.passwordHash))) {
-    throw new Error("Admin bilgileri hatalı.");
+    return { error: "E-posta veya şifre hatalı." };
   }
 
   await createUserSession(user.id, user.role);
   redirect("/admin/dashboard");
 }
 
-export async function loginParentAction(formData: FormData) {
-  const schoolNumber = required(text(formData, "schoolNumber"), "Okul numarası gerekli.");
-  const code = required(text(formData, "parentCode"), "Veli kodu gerekli.").toUpperCase();
+export async function loginParentAction(_state: LoginActionState, formData: FormData): Promise<LoginActionState> {
+  const schoolNumber = text(formData, "schoolNumber");
+  const code = text(formData, "parentCode").toUpperCase();
+  if (!schoolNumber || !code) {
+    return { error: "Okul numarası ve veli kodu gerekli." };
+  }
 
   const student = await prisma.user.findFirst({
     where: {
@@ -302,7 +318,7 @@ export async function loginParentAction(formData: FormData) {
     }
   });
 
-  if (!student) throw new Error("Okul numarası veya veli kodu hatalı.");
+  if (!student) return { error: "Okul numarası veya veli kodu hatalı." };
 
   await prisma.parentAccessCode.update({
     where: { studentId: student.id },

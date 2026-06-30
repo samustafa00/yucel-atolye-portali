@@ -1,17 +1,13 @@
 import Link from "next/link";
+import { StudentLoginForm } from "@/components/login-forms";
 import { PublicLayout } from "@/components/layouts";
-import { Button, Card, Input } from "@/components/ui";
-import { loginStudentAction } from "@/lib/actions";
+import { Card } from "@/components/ui";
 
 export default function StudentLoginPage() {
   return (
     <PublicLayout>
       <AuthShell title="Öğrenci Girişi" description="Okul numaran ve şifrenle giriş yap.">
-        <form action={loginStudentAction} className="grid gap-4">
-          <Input label="Okul numarası" name="schoolNumber" autoComplete="username" required />
-          <Input label="Şifre" name="password" type="password" autoComplete="current-password" required />
-          <Button>Giriş Yap</Button>
-        </form>
+        <StudentLoginForm />
         <div className="mt-4 flex flex-wrap justify-between gap-3 text-sm font-semibold text-slate-600">
           <Link href="/student/register">Yeni kayıt</Link>
           <Link href="/student/forgot-password">Şifremi unuttum</Link>
