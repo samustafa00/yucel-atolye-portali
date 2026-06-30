@@ -1,6 +1,7 @@
 import { AdminLayout } from "@/components/layouts";
+import { ConfirmButton } from "@/components/confirm-button";
 import { Badge, Button, Card, CardTitle, EmptyState, Input, Table } from "@/components/ui";
-import { adminAdjustDiamondsAction, adminCreateStudentAction, regenerateParentCodeAction } from "@/lib/actions";
+import { adminAdjustDiamondsAction, adminCreateStudentAction, adminDeleteStudentAction, regenerateParentCodeAction } from "@/lib/actions";
 import { prisma } from "@/lib/db";
 import { fullName } from "@/lib/format";
 import { requireAdmin } from "@/lib/session";
@@ -61,6 +62,16 @@ export default async function AdminStudentsPage() {
                         <Input label="Elmas düzeltme" name="amount" type="number" defaultValue="10" />
                         <Input label="Neden" name="reason" defaultValue="Admin düzeltmesi" />
                         <Button>Uygula</Button>
+                      </form>
+                      <form action={adminDeleteStudentAction}>
+                        <input type="hidden" name="studentId" value={student.id} />
+                        <ConfirmButton
+                          variant="danger"
+                          className="flex w-full"
+                          message={`${fullName(student)} öğrencisini ve ilişkili kayıtlarını silmek istediğinize emin misiniz?`}
+                        >
+                          Öğrenciyi Sil
+                        </ConfirmButton>
                       </form>
                     </div>
                   </td>

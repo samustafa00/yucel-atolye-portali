@@ -1,6 +1,7 @@
 import { AdminLayout } from "@/components/layouts";
+import { ConfirmButton } from "@/components/confirm-button";
 import { Badge, Button, Card, CardTitle, Input, Textarea } from "@/components/ui";
-import { adminCreateWorkshopAction, adminUpdateWorkshopAction } from "@/lib/actions";
+import { adminCreateWorkshopAction, adminDeleteWorkshopAction, adminUpdateWorkshopAction } from "@/lib/actions";
 import { prisma } from "@/lib/db";
 import { requireAdmin } from "@/lib/session";
 
@@ -42,13 +43,30 @@ export default async function AdminWorkshopsPage() {
               </div>
               <form action={adminUpdateWorkshopAction} className="grid gap-3">
                 <input type="hidden" name="workshopId" value={workshop.id} />
-                <Textarea label="Kısa açıklama" name="shortDescription" defaultValue={workshop.shortDescription} />
-                <Input label="Kontenjan" name="capacity" type="number" defaultValue={workshop.capacity} />
+                <Input label="Atölye adı" name="name" defaultValue={workshop.name} required />
+                <Textarea label="Kısa açıklama" name="shortDescription" defaultValue={workshop.shortDescription} required />
+                <Textarea label="Detaylı açıklama" name="description" defaultValue={workshop.description} />
+                <Textarea label="Kimler için uygun?" name="suitableFor" defaultValue={workshop.suitableFor} />
+                <Textarea label="Kazanımlar" name="outcomes" defaultValue={workshop.outcomes} />
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <Input label="Kontenjan" name="capacity" type="number" defaultValue={workshop.capacity} />
+                  <Input label="Sıralama" name="sortOrder" type="number" defaultValue={workshop.sortOrder} />
+                </div>
                 <label className="flex items-center gap-2 text-sm font-semibold text-slate-600">
                   <input type="checkbox" name="isActive" defaultChecked={workshop.isActive} />
                   Aktif
                 </label>
                 <Button variant="secondary">Güncelle</Button>
+              </form>
+              <form action={adminDeleteWorkshopAction} className="mt-3">
+                <input type="hidden" name="workshopId" value={workshop.id} />
+                <ConfirmButton
+                  variant="danger"
+                  className="flex w-full"
+                  message={`${workshop.name} atölyesini ve ilişkili kayıtlarını silmek istediğinize emin misiniz?`}
+                >
+                  Atölyeyi Sil
+                </ConfirmButton>
               </form>
             </Card>
           ))}

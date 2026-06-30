@@ -1,6 +1,6 @@
 "use server";
 
-import { AttendanceStatus, EnrollmentStatus, RewardType, Role, SubmissionStatus } from "@prisma/client";
+import { AnnouncementTargetType, AttendanceStatus, EnrollmentStatus, RewardType, Role, SubmissionStatus } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
@@ -44,6 +44,16 @@ function dueDateFrom(value: string) {
   return new Date(`${value}T23:59:00`);
 }
 
+function enrollmentStatusFrom(value: string): EnrollmentStatus {
+  const statuses: EnrollmentStatus[] = ["active", "completed", "cancelled", "waitlist"];
+  return statuses.includes(value as EnrollmentStatus) ? (value as EnrollmentStatus) : "active";
+}
+
+function announcementTargetFrom(value: string): AnnouncementTargetType {
+  const targetTypes: AnnouncementTargetType[] = ["all", "students", "parents", "teachers", "workshop"];
+  return targetTypes.includes(value as AnnouncementTargetType) ? (value as AnnouncementTargetType) : "all";
+}
+
 async function createAuditLog(
   userId: string | null,
   action: string,
@@ -82,6 +92,15 @@ async function createPendingSubmissions(studentId: string, workshopId: string) {
       }
     });
   }
+}
+
+async function deleteStudentWorkshopSubmissions(studentId: string, workshopId: string) {
+  await prisma.assignmentSubmission.deleteMany({
+    where: {
+      studentId,
+      assignment: { is: { workshopId } }
+    }
+  });
 }
 
 async function createStudentAccount({
@@ -705,6 +724,17 @@ export async function adminAdjustDiamondsAction(formData: FormData) {
   redirect("/admin/students");
 }
 
+export async function adminDeleteStudentAction(formData: FormData) {
+  const admin = await requireAdmin();
+  const studentId = required(text(formData, "studentId"), "Öğrenci gerekli.");
+  const student = await prisma.user.findFirst({ where: { id: studentId, role: "student" } });
+  if (!student) throw new Error("Öğrenci bulunamadı.");
+
+  await prisma.user.delete({ where: { id: studentId } });
+  await createAuditLog(admin.id, "student.deleted", "User", studentId, `${student.firstName} ${student.lastName} öğrencisi silindi.`);
+  redirect("/admin/students");
+}
+
 export async function approveTeacherAction(formData: FormData) {
   const admin = await requireAdmin();
   const teacherId = required(text(formData, "teacherId"), "Öğretmen gerekli.");
@@ -716,6 +746,17 @@ export async function approveTeacherAction(formData: FormData) {
   });
 
   await createAuditLog(admin.id, "teacher.approved", "User", teacherId, isApproved ? "Öğretmen onaylandı." : "Öğretmen onayı kaldırıldı.");
+  redirect("/admin/teachers");
+}
+
+export async function adminDeleteTeacherAction(formData: FormData) {
+  const admin = await requireAdmin();
+  const teacherId = required(text(formData, "teacherId"), "Öğretmen gerekli.");
+  const teacher = await prisma.user.findFirst({ where: { id: teacherId, role: "teacher" } });
+  if (!teacher) throw new Error("Öğretmen bulunamadı.");
+
+  await prisma.user.delete({ where: { id: teacherId } });
+  await createAuditLog(admin.id, "teacher.deleted", "User", teacherId, `${teacher.firstName} ${teacher.lastName} öğretmeni silindi.`);
   redirect("/admin/teachers");
 }
 
@@ -777,16 +818,93 @@ export async function adminCreateWorkshopAction(formData: FormData) {
 export async function adminUpdateWorkshopAction(formData: FormData) {
   const admin = await requireAdmin();
   const workshopId = required(text(formData, "workshopId"), "Atölye gerekli.");
+  const name = required(text(formData, "name"), "Atölye adı gerekli.");
   await prisma.workshop.update({
     where: { id: workshopId },
     data: {
-      shortDescription: text(formData, "shortDescription"),
+      name,
+      slug: slugify(name),
+      shortDescription: required(text(formData, "shortDescription"), "Kısa açıklama gerekli."),
+      description: text(formData, "description") || text(formData, "shortDescription"),
+      suitableFor: text(formData, "suitableFor"),
+      outcomes: text(formData, "outcomes"),
       capacity: numberField(formData, "capacity", 24),
+      sortOrder: numberField(formData, "sortOrder", 99),
       isActive: boolField(formData, "isActive")
     }
   });
   await createAuditLog(admin.id, "workshop.updated", "Workshop", workshopId, "Atölye bilgileri güncellendi.");
   redirect("/admin/workshops");
+}
+
+export async function adminDeleteWorkshopAction(formData: FormData) {
+  const admin = await requireAdmin();
+  const workshopId = required(text(formData, "workshopId"), "Atölye gerekli.");
+  const workshop = await prisma.workshop.findUnique({ where: { id: workshopId } });
+  if (!workshop) throw new Error("Atölye bulunamadı.");
+
+  await prisma.workshop.delete({ where: { id: workshopId } });
+  await createAuditLog(admin.id, "workshop.deleted", "Workshop", workshopId, `${workshop.name} atölyesi silindi.`);
+  redirect("/admin/workshops");
+}
+
+export async function adminCreateCurriculumAction(formData: FormData) {
+  const admin = await requireAdmin();
+  const workshopId = required(text(formData, "workshopId"), "Atölye gerekli.");
+  const weekNumber = numberField(formData, "weekNumber", 1);
+
+  const curriculum = await prisma.workshopCurriculum.upsert({
+    where: { workshopId_weekNumber: { workshopId, weekNumber } },
+    update: {
+      title: required(text(formData, "title"), "Başlık gerekli."),
+      description: required(text(formData, "description"), "Açıklama gerekli."),
+      outcomes: text(formData, "outcomes"),
+      activity: text(formData, "activity"),
+      homeworkSuggestion: text(formData, "homeworkSuggestion")
+    },
+    create: {
+      workshopId,
+      weekNumber,
+      title: required(text(formData, "title"), "Başlık gerekli."),
+      description: required(text(formData, "description"), "Açıklama gerekli."),
+      outcomes: text(formData, "outcomes"),
+      activity: text(formData, "activity"),
+      homeworkSuggestion: text(formData, "homeworkSuggestion")
+    }
+  });
+
+  await createAuditLog(admin.id, "curriculum.upserted", "WorkshopCurriculum", curriculum.id, "Müfredat haftası eklendi veya güncellendi.");
+  redirect("/admin/curriculum");
+}
+
+export async function adminUpdateCurriculumAction(formData: FormData) {
+  const admin = await requireAdmin();
+  const curriculumId = required(text(formData, "curriculumId"), "Müfredat gerekli.");
+  const curriculum = await prisma.workshopCurriculum.update({
+    where: { id: curriculumId },
+    data: {
+      weekNumber: numberField(formData, "weekNumber", 1),
+      title: required(text(formData, "title"), "Başlık gerekli."),
+      description: required(text(formData, "description"), "Açıklama gerekli."),
+      outcomes: text(formData, "outcomes"),
+      activity: text(formData, "activity"),
+      homeworkSuggestion: text(formData, "homeworkSuggestion")
+    }
+  });
+
+  await createAuditLog(admin.id, "curriculum.updated", "WorkshopCurriculum", curriculum.id, "Müfredat haftası güncellendi.");
+  redirect("/admin/curriculum");
+}
+
+export async function adminDeleteCurriculumAction(formData: FormData) {
+  const admin = await requireAdmin();
+  const curriculumId = required(text(formData, "curriculumId"), "Müfredat gerekli.");
+  const curriculum = await prisma.workshopCurriculum.findUnique({ where: { id: curriculumId } });
+  if (!curriculum) throw new Error("Müfredat bulunamadı.");
+
+  await prisma.workshopCurriculum.delete({ where: { id: curriculumId } });
+  await createAuditLog(admin.id, "curriculum.deleted", "WorkshopCurriculum", curriculumId, "Müfredat haftası silindi.");
+  redirect("/admin/curriculum");
 }
 
 export async function adminCreateEnrollmentAction(formData: FormData) {
@@ -812,6 +930,62 @@ export async function adminCreateEnrollmentAction(formData: FormData) {
   });
   if (status === "active") await createPendingSubmissions(studentId, workshopId);
   await createAuditLog(admin.id, "enrollment.admin_created", "Enrollment", studentId, "Admin atölye kaydı yaptı.");
+  redirect("/admin/enrollments");
+}
+
+export async function adminUpdateEnrollmentAction(formData: FormData) {
+  const admin = await requireAdmin();
+  const enrollmentId = required(text(formData, "enrollmentId"), "Kayıt gerekli.");
+  const workshopId = required(text(formData, "workshopId"), "Atölye gerekli.");
+  const status = enrollmentStatusFrom(text(formData, "status"));
+
+  const enrollment = await prisma.enrollment.findUnique({ where: { id: enrollmentId } });
+  if (!enrollment) throw new Error("Kayıt bulunamadı.");
+
+  const duplicate = await prisma.enrollment.findFirst({
+    where: {
+      id: { not: enrollmentId },
+      studentId: enrollment.studentId,
+      workshopId
+    }
+  });
+  if (duplicate) throw new Error("Bu öğrencinin seçilen atölyede zaten kaydı var.");
+
+  const singleMode = await isSingleWorkshopMode();
+  if (singleMode && status === "active") {
+    const otherActive = await prisma.enrollment.findFirst({
+      where: {
+        id: { not: enrollmentId },
+        studentId: enrollment.studentId,
+        status: "active"
+      }
+    });
+    if (otherActive) throw new Error("Öğrenci zaten aktif bir atölyeye kayıtlı.");
+  }
+
+  await prisma.enrollment.update({
+    where: { id: enrollmentId },
+    data: { workshopId, status }
+  });
+
+  if (enrollment.workshopId !== workshopId || status !== "active") {
+    await deleteStudentWorkshopSubmissions(enrollment.studentId, enrollment.workshopId);
+  }
+  if (status === "active") await createPendingSubmissions(enrollment.studentId, workshopId);
+
+  await createAuditLog(admin.id, "enrollment.updated", "Enrollment", enrollmentId, "Admin atölye kaydını güncelledi.");
+  redirect("/admin/enrollments");
+}
+
+export async function adminDeleteEnrollmentAction(formData: FormData) {
+  const admin = await requireAdmin();
+  const enrollmentId = required(text(formData, "enrollmentId"), "Kayıt gerekli.");
+  const enrollment = await prisma.enrollment.findUnique({ where: { id: enrollmentId } });
+  if (!enrollment) throw new Error("Kayıt bulunamadı.");
+
+  await prisma.enrollment.delete({ where: { id: enrollmentId } });
+  await deleteStudentWorkshopSubmissions(enrollment.studentId, enrollment.workshopId);
+  await createAuditLog(admin.id, "enrollment.deleted", "Enrollment", enrollmentId, "Admin atölye kaydını sildi.");
   redirect("/admin/enrollments");
 }
 
@@ -849,6 +1023,62 @@ export async function adminCreateAssignmentAction(formData: FormData) {
   }
 
   await createAuditLog(admin.id, "assignment.admin_created", "Assignment", assignment.id, "Admin ödev oluşturdu.");
+  redirect("/admin/assignments");
+}
+
+export async function adminUpdateAssignmentAction(formData: FormData) {
+  const admin = await requireAdmin();
+  const assignmentId = required(text(formData, "assignmentId"), "Ödev gerekli.");
+  const workshopId = required(text(formData, "workshopId"), "Atölye gerekli.");
+
+  const assignment = await prisma.assignment.findUnique({ where: { id: assignmentId } });
+  if (!assignment) throw new Error("Ödev bulunamadı.");
+
+  await prisma.assignment.update({
+    where: { id: assignmentId },
+    data: {
+      workshopId,
+      title: required(text(formData, "title"), "Başlık gerekli."),
+      description: required(text(formData, "description"), "Açıklama gerekli."),
+      weekNumber: numberField(formData, "weekNumber", 1),
+      dueDate: dueDateFrom(text(formData, "dueDate")),
+      diamondReward: numberField(formData, "diamondReward", 20),
+      maxScore: numberField(formData, "maxScore", 100),
+      requiresFile: boolField(formData, "requiresFile"),
+      isActive: boolField(formData, "isActive")
+    }
+  });
+
+  if (boolField(formData, "isActive")) {
+    const enrollments = await prisma.enrollment.findMany({
+      where: { workshopId, status: "active" },
+      select: { studentId: true }
+    });
+    for (const enrollment of enrollments) {
+      await prisma.assignmentSubmission.upsert({
+        where: { assignmentId_studentId: { assignmentId, studentId: enrollment.studentId } },
+        update: {},
+        create: {
+          assignmentId,
+          studentId: enrollment.studentId,
+          status: "pending"
+        }
+      });
+    }
+  }
+
+  await createAuditLog(admin.id, "assignment.updated", "Assignment", assignmentId, "Admin ödevi güncelledi.");
+  redirect("/admin/assignments");
+}
+
+export async function adminDeleteAssignmentAction(formData: FormData) {
+  const admin = await requireAdmin();
+  const assignmentId = required(text(formData, "assignmentId"), "Ödev gerekli.");
+  const assignment = await prisma.assignment.findUnique({ where: { id: assignmentId } });
+  if (!assignment) throw new Error("Ödev bulunamadı.");
+
+  await prisma.assignment.delete({ where: { id: assignmentId } });
+  await createAuditLog(admin.id, "assignment.deleted", "Assignment", assignmentId, `${assignment.title} ödevi silindi.`);
   redirect("/admin/assignments");
 }
 
@@ -945,15 +1175,13 @@ export async function adminModerateRewardAction(formData: FormData) {
 
 export async function adminCreateAnnouncementAction(formData: FormData) {
   const admin = await requireAdmin();
-  const targetType = text(formData, "targetType");
+  const targetType = announcementTargetFrom(text(formData, "targetType"));
   await prisma.announcement.create({
     data: {
       title: required(text(formData, "title"), "Başlık gerekli."),
       content: required(text(formData, "content"), "İçerik gerekli."),
-      targetType: ["all", "students", "parents", "teachers", "workshop"].includes(targetType)
-        ? (targetType as never)
-        : "all",
-      workshopId: text(formData, "workshopId") || null,
+      targetType,
+      workshopId: targetType === "workshop" ? required(text(formData, "workshopId"), "Atölye gerekli.") : null,
       createdByUserId: admin.id,
       isPublished: boolField(formData, "isPublished"),
       publishedAt: boolField(formData, "isPublished") ? new Date() : null
@@ -961,6 +1189,41 @@ export async function adminCreateAnnouncementAction(formData: FormData) {
   });
 
   await createAuditLog(admin.id, "announcement.admin_created", "Announcement", null, "Admin duyuru oluşturdu.");
+  redirect("/admin/announcements");
+}
+
+export async function adminUpdateAnnouncementAction(formData: FormData) {
+  const admin = await requireAdmin();
+  const announcementId = required(text(formData, "announcementId"), "Duyuru gerekli.");
+  const announcement = await prisma.announcement.findUnique({ where: { id: announcementId } });
+  if (!announcement) throw new Error("Duyuru bulunamadı.");
+
+  const targetType = announcementTargetFrom(text(formData, "targetType"));
+  const isPublished = boolField(formData, "isPublished");
+  await prisma.announcement.update({
+    where: { id: announcementId },
+    data: {
+      title: required(text(formData, "title"), "Başlık gerekli."),
+      content: required(text(formData, "content"), "İçerik gerekli."),
+      targetType,
+      workshopId: targetType === "workshop" ? required(text(formData, "workshopId"), "Atölye gerekli.") : null,
+      isPublished,
+      publishedAt: isPublished ? announcement.publishedAt ?? new Date() : null
+    }
+  });
+
+  await createAuditLog(admin.id, "announcement.updated", "Announcement", announcementId, "Admin duyuruyu güncelledi.");
+  redirect("/admin/announcements");
+}
+
+export async function adminDeleteAnnouncementAction(formData: FormData) {
+  const admin = await requireAdmin();
+  const announcementId = required(text(formData, "announcementId"), "Duyuru gerekli.");
+  const announcement = await prisma.announcement.findUnique({ where: { id: announcementId } });
+  if (!announcement) throw new Error("Duyuru bulunamadı.");
+
+  await prisma.announcement.delete({ where: { id: announcementId } });
+  await createAuditLog(admin.id, "announcement.deleted", "Announcement", announcementId, `${announcement.title} duyurusu silindi.`);
   redirect("/admin/announcements");
 }
 

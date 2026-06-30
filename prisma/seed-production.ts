@@ -219,6 +219,12 @@ async function ensureAppSettings() {
 }
 
 async function upsertWorkshops() {
+  const existingWorkshopCount = await prisma.workshop.count();
+  if (existingWorkshopCount > 0) {
+    console.log("Atölyeler zaten var; canlı seed atölye ve müfredatları değiştirmedi.");
+    return;
+  }
+
   const parsed = parseCurriculumFile();
   const workshops = parsed.length >= 6 ? parsed : fallbackWorkshops();
 
@@ -294,6 +300,12 @@ async function upsertReward(data: RewardSeed) {
 }
 
 async function upsertRewards() {
+  const existingRewardCount = await prisma.reward.count();
+  if (existingRewardCount > 0) {
+    console.log("Ödüller zaten var; canlı seed ödülleri değiştirmedi.");
+    return;
+  }
+
   const rewards: RewardSeed[] = [
     { name: "Bronz Madalya", description: "Atölye yolculuğunda ilk başarı madalyası.", cost: 100, type: "medal", durationDays: 7, requiresAdminApproval: false },
     { name: "Gümüş Madalya", description: "Düzenli çalışma ve güçlü ilerleme madalyası.", cost: 250, type: "medal", durationDays: 7, requiresAdminApproval: false },

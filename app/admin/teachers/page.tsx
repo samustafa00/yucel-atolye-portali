@@ -1,6 +1,7 @@
 import { AdminLayout } from "@/components/layouts";
+import { ConfirmButton } from "@/components/confirm-button";
 import { Badge, Button, Card, CardTitle, EmptyState, Input, Select, Table } from "@/components/ui";
-import { adminCreateTeacherAction, adminSetPermissionAction, approveTeacherAction } from "@/lib/actions";
+import { adminCreateTeacherAction, adminDeleteTeacherAction, adminSetPermissionAction, approveTeacherAction } from "@/lib/actions";
 import { prisma } from "@/lib/db";
 import { fullName } from "@/lib/format";
 import { requireAdmin } from "@/lib/session";
@@ -71,6 +72,16 @@ export default async function AdminTeachersPage() {
                           </label>
                         ))}
                         <Button>Yetki Ver/Güncelle</Button>
+                      </form>
+                      <form action={adminDeleteTeacherAction}>
+                        <input type="hidden" name="teacherId" value={teacher.id} />
+                        <ConfirmButton
+                          variant="danger"
+                          className="flex w-full"
+                          message={`${fullName(teacher)} öğretmenini silmek istediğinize emin misiniz?`}
+                        >
+                          Öğretmeni Sil
+                        </ConfirmButton>
                       </form>
                     </div>
                   </td>
