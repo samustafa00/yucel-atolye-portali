@@ -29,7 +29,20 @@ export default async function TeacherSubmissionsPage() {
                 <td className="px-3 py-3 text-slate-600">{submission.assignment.title}<br /><span className="text-xs">{submission.assignment.workshop.name}</span></td>
                 <td className="px-3 py-3"><Badge tone={submission.status === "graded" ? "green" : "amber"}>{submissionLabels[submission.status]}</Badge></td>
                 <td className="px-3 py-3 text-slate-600">{formatDate(submission.submittedAt)}</td>
-                <td className="max-w-sm px-3 py-3 text-slate-600">{submission.answerText ?? "-"}</td>
+                <td className="max-w-sm px-3 py-3 text-slate-600">
+                  <div className="grid gap-2">
+                    <p className="whitespace-pre-line">{submission.answerText || "-"}</p>
+                    {submission.fileUrl ? (
+                      <a href={submission.fileUrl} target="_blank" rel="noreferrer" className="inline-flex">
+                        <img
+                          src={submission.fileUrl}
+                          alt={`${fullName(submission.student)} ödev görseli`}
+                          className="max-h-40 rounded-lg border border-slate-200 object-contain"
+                        />
+                      </a>
+                    ) : null}
+                  </div>
+                </td>
                 <td className="px-3 py-3">
                   <form action={gradeSubmissionAction} className="grid min-w-72 gap-2">
                     <input type="hidden" name="submissionId" value={submission.id} />

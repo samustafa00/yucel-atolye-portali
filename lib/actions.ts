@@ -23,6 +23,14 @@ function boolField(formData: FormData, key: string) {
   return formData.get(key) === "on" || formData.get(key) === "true";
 }
 
+function imageFileField(formData: FormData, key: string) {
+  const value = formData.get(key);
+  if (!value || typeof value === "string") return null;
+  if (!("arrayBuffer" in value) || !("size" in value) || !("type" in value)) return null;
+  const file = value as File;
+  return file.size > 0 ? file : null;
+}
+
 function required(value: string, message: string) {
   if (!value) throw new Error(message);
   return value;
@@ -47,6 +55,21 @@ function dueDateFrom(value: string) {
 type LoginActionState = {
   error: string;
 };
+
+const MAX_SUBMISSION_IMAGE_BYTES = 4 * 1024 * 1024;
+const SUBMISSION_IMAGE_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
+
+async function imageDataUrl(file: File) {
+  if (file.size > MAX_SUBMISSION_IMAGE_BYTES) {
+    throw new Error("Görsel en fazla 4 MB olabilir.");
+  }
+  if (!SUBMISSION_IMAGE_TYPES.has(file.type)) {
+    throw new Error("Yalnızca JPG, PNG veya WEBP görsel yükleyebilirsiniz.");
+  }
+
+  const buffer = Buffer.from(await file.arrayBuffer());
+  return `data:${file.type};base64,${buffer.toString("base64")}`;
+}
 
 function enrollmentStatusFrom(value: string): EnrollmentStatus {
   const statuses: EnrollmentStatus[] = ["active", "completed", "cancelled", "waitlist"];
@@ -332,7 +355,9 @@ export async function loginParentAction(_state: LoginActionState, formData: Form
 export async function submitAssignmentAction(formData: FormData) {
   const student = await requireStudent();
   const assignmentId = required(text(formData, "assignmentId"), "Ödev bulunamadı.");
-  const answerText = required(text(formData, "answerText"), "Cevap metni gerekli.");
+  const answerText = text(formData, "answerText");
+  const uploadedImage = imageFileField(formData, "submissionImage");
+  const removeImage = boolField(formData, "removeImage");
 
   const assignment = await prisma.assignment.findUnique({
     where: { id: assignmentId },
@@ -345,10 +370,19 @@ export async function submitAssignmentAction(formData: FormData) {
   });
   if (!enrollment) throw new Error("Bu ödeve erişim yetkiniz yok.");
 
+  const existingSubmission = await prisma.assignmentSubmission.findUnique({
+    where: { assignmentId_studentId: { assignmentId, studentId: student.id } },
+    select: { fileUrl: true }
+  });
+  const fileUrl = uploadedImage ? await imageDataUrl(uploadedImage) : removeImage ? null : existingSubmission?.fileUrl ?? null;
+  if (!answerText && !fileUrl) throw new Error("Metin cevabı yazın veya ödev görseli yükleyin.");
+  if (assignment.requiresFile && !fileUrl) throw new Error("Bu ödev için görsel yükleme gerekli.");
+
   await prisma.assignmentSubmission.upsert({
     where: { assignmentId_studentId: { assignmentId, studentId: student.id } },
     update: {
       answerText,
+      fileUrl,
       status: assignment.dueDate < new Date() ? "late" : "submitted",
       submittedAt: new Date()
     },
@@ -356,6 +390,7 @@ export async function submitAssignmentAction(formData: FormData) {
       assignmentId,
       studentId: student.id,
       answerText,
+      fileUrl,
       status: assignment.dueDate < new Date() ? "late" : "submitted",
       submittedAt: new Date()
     }

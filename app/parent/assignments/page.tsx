@@ -19,13 +19,22 @@ export default async function ParentAssignmentsPage() {
       <Card>
         <CardTitle>Ödevler</CardTitle>
         {submissions.length ? (
-          <Table headers={["Ödev", "Atölye", "Son Teslim", "Durum", "Puan", "Geri Bildirim", "Elmas"]}>
+          <Table headers={["Ödev", "Atölye", "Son Teslim", "Durum", "Görsel", "Puan", "Geri Bildirim", "Elmas"]}>
             {submissions.map((submission) => (
               <tr key={submission.id}>
                 <td className="px-3 py-3 font-semibold text-ink">{submission.assignment.title}</td>
                 <td className="px-3 py-3 text-slate-600">{submission.assignment.workshop.name}</td>
                 <td className="px-3 py-3 text-slate-600">{formatDate(submission.assignment.dueDate)}</td>
                 <td className="px-3 py-3"><Badge tone={submission.status === "graded" ? "green" : "amber"}>{submissionLabels[submission.status]}</Badge></td>
+                <td className="px-3 py-3">
+                  {submission.fileUrl ? (
+                    <a href={submission.fileUrl} target="_blank" rel="noreferrer" className="font-semibold text-leaf">
+                      Görüntüle
+                    </a>
+                  ) : (
+                    <span className="text-slate-400">-</span>
+                  )}
+                </td>
                 <td className="px-3 py-3 text-slate-600">{submission.score ?? "-"}</td>
                 <td className="px-3 py-3 text-slate-600">{submission.feedback ?? "-"}</td>
                 <td className="px-3 py-3 text-slate-600">{submission.assignment.diamondReward}</td>

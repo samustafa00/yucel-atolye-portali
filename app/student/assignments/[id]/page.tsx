@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { StudentLayout } from "@/components/layouts";
-import { Badge, Button, Card, CardTitle, Textarea } from "@/components/ui";
+import { Badge, Button, Card, CardTitle, Input, Textarea } from "@/components/ui";
 import { submissionLabels } from "@/lib/constants";
 import { submitAssignmentAction } from "@/lib/actions";
 import { prisma } from "@/lib/db";
@@ -37,9 +37,34 @@ export default async function StudentAssignmentDetailPage({ params }: { params: 
         </Card>
         <Card>
           <CardTitle>Cevabım</CardTitle>
-          <form action={submitAssignmentAction} className="grid gap-4">
+          <form action={submitAssignmentAction} className="grid gap-4" encType="multipart/form-data">
             <input type="hidden" name="assignmentId" value={submission.assignmentId} />
-            <Textarea label="Metin cevabı" name="answerText" defaultValue={submission.answerText ?? ""} disabled={locked} required />
+            <Textarea label="Metin cevabı" name="answerText" defaultValue={submission.answerText ?? ""} disabled={locked} />
+            <Input
+              label={submission.assignment.requiresFile ? "Ödev görseli (zorunlu)" : "Ödev görseli"}
+              name="submissionImage"
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              disabled={locked}
+              required={submission.assignment.requiresFile && !submission.fileUrl && !locked}
+            />
+            <p className="-mt-2 text-xs text-slate-500">JPG, PNG veya WEBP yükleyebilirsiniz. En fazla 4 MB.</p>
+            {submission.fileUrl ? (
+              <div className="grid gap-2 rounded-lg border border-slate-200 bg-slate-50 p-3">
+                <span className="text-sm font-semibold text-slate-700">Yüklü görsel</span>
+                <img
+                  src={submission.fileUrl}
+                  alt={`${submission.assignment.title} ödev görseli`}
+                  className="max-h-72 rounded-lg border border-slate-200 object-contain"
+                />
+                {!locked ? (
+                  <label className="flex items-center gap-2 text-sm font-semibold text-slate-600">
+                    <input type="checkbox" name="removeImage" />
+                    Yüklü görseli kaldır
+                  </label>
+                ) : null}
+              </div>
+            ) : null}
             {submission.feedback ? (
               <div className="rounded-lg bg-emerald-50 p-3 text-sm text-emerald-800">
                 <strong>Öğretmen geri bildirimi:</strong> {submission.feedback}
